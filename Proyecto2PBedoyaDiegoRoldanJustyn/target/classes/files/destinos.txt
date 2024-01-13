@@ -1,0 +1,30 @@
+Nueva York,Estados Unidos
+París,Francia
+Tokio,Japón
+Londres,Reino Unido
+Sídney,Australia
+Roma,Italia
+Pekín,China
+Río de Janeiro,Brasil
+Ciudad del Cabo,Sudáfrica
+Moscú,Rusia
+Toronto,Canadá
+Barcelona,España
+Seúl,Corea del Sur
+Ciudad de México,México
+Berlín,Alemania
+Ámsterdam,Países Bajos
+Buenos Aires,Argentina
+Bangkok,Tailandia
+El Cairo,Egipto
+Estocolmo,Suecia
+Atenas,Grecia
+Kioto,Japón
+Praga,República Checa
+Copenhague,Dinamarca
+Viena,Austria
+Singapur,Singapur
+Dublín,Irlanda
+Viena,Austria
+Auckland,Nueva Zelanda
+Helsinki,Finlandia
