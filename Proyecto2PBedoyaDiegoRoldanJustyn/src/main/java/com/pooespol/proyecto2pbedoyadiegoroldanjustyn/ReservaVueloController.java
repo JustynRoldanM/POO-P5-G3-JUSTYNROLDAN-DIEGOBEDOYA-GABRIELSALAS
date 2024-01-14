@@ -10,7 +10,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import modelo.Cliente;
 import modelo.Vuelo;
 
@@ -27,10 +32,24 @@ public class ReservaVueloController implements Initializable {
     private static int cantidadPasajeros;
     private static String origen;
     private static String destino;
+    
+    @FXML
+    private Label titulo;
+    
+    @FXML
+    private AnchorPane root;
+    
+    @FXML
+    private Pane paneCenter;
+    
+    @FXML
+    private BorderPane bp;
+    @FXML
+    private Pane paneTop;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         llenarListaVuelos();
-        System.out.println(vuelos.size());
+        titulo.setText("Selecciona tu vuelo "+origen+" - "+destino);
     }    
     
     public void llenarListaVuelos(){
@@ -39,17 +58,13 @@ public class ReservaVueloController implements Initializable {
             br.readLine();
             while((linea=br.readLine())!=null){
                 String[] info = linea.split(";");
-                vuelos.add(new Vuelo(info[3],info[1],info[2],Double.valueOf(info[4]),info[5],info[6],Integer.valueOf(info[0]),Integer.valueOf(info[7]),Double.valueOf(info[8])));
+                vuelos.add(new Vuelo(info[3],info[1],info[2],Double.valueOf(info[4]),info[5],info[6],info[0],info[7],Double.valueOf(info[8])));
             }
         }catch(IOException e){
             e.printStackTrace();
         }
     }
 
-    public static String getFechaVueloIda() {
-        return fechaVueloSalida;
-    }
-    
     public ArrayList<Vuelo> cargarVuelosXfechaVOrigen(){
         ArrayList<Vuelo> vuelos = new ArrayList<>();
         for(Vuelo v: vuelos){
@@ -69,9 +84,13 @@ public class ReservaVueloController implements Initializable {
         }
         return vuelos;
     }
-    
-    public static void setFechaVueloIda(String fechaVueloSalida) {
-        ReservaVueloController.fechaVueloSalida = fechaVueloSalida;
+
+    public static String getFechaVueloRegreso() {
+        return fechaVueloRegreso;
+    }
+
+    public static void setFechaVueloRegreso(String fechaVueloRegreso) {
+        ReservaVueloController.fechaVueloRegreso = fechaVueloRegreso;
     }
 
     public static String getFechaVueloSalida() {
@@ -106,4 +125,5 @@ public class ReservaVueloController implements Initializable {
         ReservaVueloController.destino = destino;
     }
     
+   
 }

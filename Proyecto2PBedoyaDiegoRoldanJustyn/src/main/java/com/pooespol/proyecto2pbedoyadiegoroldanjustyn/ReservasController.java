@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -48,7 +49,24 @@ public class ReservasController implements Initializable {
         cargarCombo();
         aplicarEstilos();
         btnBuscar.setOnAction(e ->{
-            
+            if(cbxOrigen.getValue()==null || cbxDestino.getValue()==null || fechaSalida==null || fechaRegreso==null || cantidadPasajeros.getValue()==null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("ERROR");
+                alert.setHeaderText("Campos incompletos, porfavor llena toda la información");
+                alert.showAndWait();
+            }else{
+                ReservaVueloController.setFechaVueloSalida(String.valueOf(fechaSalida.getValue()));
+                ReservaVueloController.setFechaVueloRegreso(String.valueOf(fechaRegreso.getValue()));
+                ReservaVueloController.setCantidadPasajeros((int) cantidadPasajeros.getValue()); 
+                ReservaVueloController.setDestino(String.valueOf(cbxDestino.getValue()));
+                ReservaVueloController.setOrigen(String.valueOf(cbxOrigen.getValue()));
+                try {
+                    cambiarAReservaVuelo();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+  
+            }
         });
     } 
     
@@ -77,6 +95,8 @@ public class ReservasController implements Initializable {
         Scene scene= new Scene(App.loadFXML("reservaVuelo"),400,400);
         s.setScene(scene);
         s.setResizable(false);
+        s.show();
     }
+    
     
 }

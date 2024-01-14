@@ -12,11 +12,11 @@ public class Vuelo {
     private double duracionHoras;
     private String horaSalida;
     private String horaLlegada;
-    private int numVuelo;
-    private int codigoAvion;
+    private String numVuelo;
+    private String codigoAvion;
     private double precioVuelo;
 
-    public Vuelo(String fechaVuelo, String origen, String destino, double duracionHoras, String horaSalida, String horaLlegada, int numVuelo, int codigoAvion, double precioVuelo) {
+    public Vuelo(String fechaVuelo, String origen, String destino, double duracionHoras, String horaSalida, String horaLlegada, String numVuelo, String codigoAvion, double precioVuelo) {
         this.fechaVuelo = fechaVuelo;
         this.origen = origen;
         this.destino = destino;
@@ -76,19 +76,19 @@ public class Vuelo {
         this.horaLlegada = horaLlegada;
     }
 
-    public int getNumVuelo() {
+    public String getNumVuelo() {
         return numVuelo;
     }
 
-    public void setNumVuelo(int numVuelo) {
+    public void setNumVuelo(String numVuelo) {
         this.numVuelo = numVuelo;
     }
 
-    public int getCodigoAvion() {
+    public String getCodigoAvion() {
         return codigoAvion;
     }
 
-    public void setCodigoAvion(int codigoAvion) {
+    public void setCodigoAvion(String codigoAvion) {
         this.codigoAvion = codigoAvion;
     }
 
