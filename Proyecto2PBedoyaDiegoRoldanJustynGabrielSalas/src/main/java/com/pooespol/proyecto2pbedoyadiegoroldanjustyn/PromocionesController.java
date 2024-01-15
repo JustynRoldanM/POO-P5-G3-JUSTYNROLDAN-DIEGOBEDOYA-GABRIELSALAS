@@ -13,6 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -28,14 +31,14 @@ public class PromocionesController implements Initializable {
     @FXML
     private ImageView mapaProyecto;
     
-   
+    @FXML
+    private BorderPane borderPane;
     
+    @FXML
+    private Pane p;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        agregarImagenes();
-    }    
-    
-     public void agregarImagenes(){
         try {
             FileInputStream f = new FileInputStream("src/main/resources/images/mapaProyecto.png");
             Image img = new Image(f);
@@ -43,6 +46,14 @@ public class PromocionesController implements Initializable {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
+        
+    }    
+    
+    public void agregarPromociones(){
+        
+    }
+     public void agregarImagenes(){
+       
     }
   
     

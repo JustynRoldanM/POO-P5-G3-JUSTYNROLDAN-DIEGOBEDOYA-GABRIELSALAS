@@ -28,3 +28,7 @@ Dublín,Irlanda
 Viena,Austria
 Auckland,Nueva Zelanda
 Helsinki,Finlandia
+Estambul,Turquía
+Medellín,Colombia
+Lima,Perú
+Aba,Nigeria

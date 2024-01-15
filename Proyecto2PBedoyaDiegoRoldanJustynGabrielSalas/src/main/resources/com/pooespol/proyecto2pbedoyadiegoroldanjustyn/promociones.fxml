@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1037.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.PromocionesController">
    <children>
-      <BorderPane prefHeight="758.0" prefWidth="1037.0">
+      <BorderPane fx:id="borderPane" prefHeight="758.0" prefWidth="1037.0">
          <top>
             <Pane prefHeight="94.0" prefWidth="936.0" style="-fx-background-color: linear-gradient(to bottom, #FFD700, #FFA500); -fx-border-color: black;" BorderPane.alignment="CENTER">
                <children>
@@ -30,9 +30,9 @@
                </children></Pane>
          </top>
          <center>
-            <Pane prefHeight="642.0" prefWidth="936.0" BorderPane.alignment="CENTER">
+            <Pane fx:id="p" prefHeight="573.0" prefWidth="1038.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="mapaProyecto" fitHeight="666.0" fitWidth="1037.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="mapaProyecto" fitHeight="666.0" fitWidth="1038.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </center></BorderPane>
