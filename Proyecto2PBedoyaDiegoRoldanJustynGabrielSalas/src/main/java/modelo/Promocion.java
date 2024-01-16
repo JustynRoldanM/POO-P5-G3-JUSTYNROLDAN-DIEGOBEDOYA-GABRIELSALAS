@@ -6,21 +6,42 @@ package modelo;
  * @author Justyn Roldan
  */
 public class Promocion {
-    private int codigoPromocion;
-    private double descuento;
+    private double coordX;
+    private double coordY;
+    private String codigoPromocion;
     private String pais;
+    private double descuento;
 
-    public Promocion(int codigoPromocion, double descuento, String pais) {
+    public Promocion(double coordX, double coordY, String codigoPromocion, String pais, double descuento) {
+        this.coordX = coordX;
+        this.coordY = coordY;
         this.codigoPromocion = codigoPromocion;
-        this.descuento = descuento;
         this.pais = pais;
+        this.descuento = descuento;
     }
 
-    public int getCodigoPromocion() {
+    public double getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(double coordX) {
+        this.coordX = coordX;
+    }
+
+    public double getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(double coordY) {
+        this.coordY = coordY;
+    }
+    
+
+    public String getCodigoPromocion() {
         return codigoPromocion;
     }
 
-    public void setCodigoPromocion(int codigoPromocion) {
+    public void setCodigoPromocion(String codigoPromocion) {
         this.codigoPromocion = codigoPromocion;
     }
 

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -32,7 +33,11 @@
          <center>
             <Pane fx:id="p" prefHeight="573.0" prefWidth="1038.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="mapaProyecto" fitHeight="666.0" fitWidth="1038.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="mapaProyecto" fitHeight="666.0" fitWidth="1038.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/mapaProyecto.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </center></BorderPane>
