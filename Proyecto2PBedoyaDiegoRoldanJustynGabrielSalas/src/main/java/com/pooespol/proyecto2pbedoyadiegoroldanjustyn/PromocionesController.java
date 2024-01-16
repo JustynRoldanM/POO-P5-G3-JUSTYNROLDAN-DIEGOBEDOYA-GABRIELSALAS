@@ -16,14 +16,20 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import modelo.Promocion;
@@ -57,14 +63,56 @@ public class PromocionesController implements Initializable {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
-        agregarPromociones();
+        ejecutarThread(cargarPromociones());
+        
     }    
-    
-        public void agregarPromociones(){
-            ArrayList<Promocion> promociones = cargarPromociones();
-            for(int i=0;i<promociones.size();i++){
-                Promocion promo = promociones.get(i);
-                try (FileInputStream f = new FileInputStream("src/main/resources/images/posicion.png")) {
+        
+        public void cargarVentanaEmergente() throws IOException{
+            Stage popupStage = new Stage();
+            VentanaEmergenteMapaController.setPopupStage(popupStage);
+            Scene scene = new Scene(App.loadFXML("ventanaEmergenteMapa"), 300, 200);  
+            popupStage.setScene(scene);
+            popupStage.show();
+        }
+        
+        public ArrayList<Promocion> cargarPromociones(){
+            ArrayList<Promocion> promociones = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/promociones.txt"))) {
+                    String linea;
+                    while ((linea = br.readLine()) != null) {
+                        String[] info = linea.split(",");
+                        Promocion promo = new Promocion(Double.valueOf(info[0]), Double.valueOf(info[1]), info[2], info[3], Integer.valueOf(info[4]));
+                        promociones.add(promo);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            return promociones;
+        }
+        
+        public void ejecutarThread(ArrayList<Promocion> promos){     
+            Thread tr = new Thread(() ->{
+                for(int i=0;i<promos.size();i++){
+                    Random random = new Random();
+                    int n = random.nextInt(10) + 1;
+                    mostrarImagenes(i);
+                    try {
+                        Thread.sleep(n*1000);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }                   
+                }
+            });
+            tr.start();
+        }
+        
+        public void mostrarImagenes(int i){
+            ArrayList<Promocion> promos = cargarPromociones();
+            Platform.runLater(new Runnable(){
+                @Override
+                public void run() {
+                   Promocion promo =promos.get(i);
+                   try (FileInputStream f = new FileInputStream("src/main/resources/images/posicion.png")) {
                      Image img = new Image(f, 30, 30, false, false);
                      ImageView im = new ImageView(img);
                      im.setPreserveRatio(true);
@@ -74,9 +122,9 @@ public class PromocionesController implements Initializable {
                      im.setLayoutY(promo.getCoordY());
                      p.getChildren().add(im);
                      im.setOnMouseClicked(e ->{
+                        VentanaEmergenteMapaController.setPromocion(promo);
                          try {
-                             VentanaEmergenteMapaController.setPromo(promo);
-                             cargarVentanaEmergente(promo);
+                             cargarVentanaEmergente();
                          } catch (IOException ex) {
                              ex.printStackTrace();
                          }
@@ -85,43 +133,9 @@ public class PromocionesController implements Initializable {
                        f.printStackTrace();
                 } catch (IOException ex) {
                     ex.printStackTrace();
-                } 
-            }
-        }
-        
-        public void cargarVentanaEmergente(Promocion promo) throws IOException{
-            Stage s = new Stage();
-            Scene scene = new Scene(App.loadFXML("ventanaEmergenteMapa"),300,200);
-            s.setScene(scene);
-            s.show();
-        }
-        
-        public ArrayList<Promocion> cargarPromociones(){
-            ArrayList<Promocion> promociones = new ArrayList<>();
-            try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/promociones.txt"))) {
-                    String linea;
-                    while ((linea = br.readLine()) != null) {
-                        String[] info = linea.split(",");
-                        Promocion promo = new Promocion(Double.valueOf(info[0]), Double.valueOf(info[1]), info[2], info[3], Double.valueOf(info[4]));
-                        promociones.add(promo);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-            return promociones;
-        }
-        
-        public void ejecutarThread(ImageView i){
-            Random random = new Random();
-            int n = random.nextInt(10) + 1;
-            Thread tr = new Thread(() ->{
-                try {
-                    Thread.sleep(n*1000);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
+               }
             });
-            tr.start();
         }
     
 }

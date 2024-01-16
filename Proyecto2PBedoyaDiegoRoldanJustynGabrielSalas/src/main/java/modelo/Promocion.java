@@ -10,9 +10,9 @@ public class Promocion {
     private double coordY;
     private String codigoPromocion;
     private String pais;
-    private double descuento;
+    private int descuento;
 
-    public Promocion(double coordX, double coordY, String codigoPromocion, String pais, double descuento) {
+    public Promocion(double coordX, double coordY, String codigoPromocion, String pais, int descuento) {
         this.coordX = coordX;
         this.coordY = coordY;
         this.codigoPromocion = codigoPromocion;
@@ -45,11 +45,11 @@ public class Promocion {
         this.codigoPromocion = codigoPromocion;
     }
 
-    public double getDescuento() {
+    public int getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(double descuento) {
+    public void setDescuento(int descuento) {
         this.descuento = descuento;
     }
 
