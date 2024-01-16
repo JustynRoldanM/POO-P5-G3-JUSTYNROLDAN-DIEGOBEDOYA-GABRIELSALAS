@@ -1,11 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController">
    <children>
-      <ScrollPane prefHeight="700.0" prefWidth="700.0" />
+      <ScrollPane prefHeight="700.0" prefWidth="700.0">
+         <content>
+            <VBox prefHeight="700.0" prefWidth="698.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="titulo" alignment="CENTER" prefHeight="55.0" prefWidth="587.0" text="Label" textFill="#cf6f43">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="34.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="41.0" prefWidth="698.0" spacing="10.0">
+                     <children>
+                        <Label fx:id="ordenar" prefHeight="36.0" prefWidth="174.0" text="Label">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="16.0" />
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText="Ordenar por: ">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ComboBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                  </HBox>
+                  <VBox fx:id="contenedorVB" prefHeight="537.0" prefWidth="698.0" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

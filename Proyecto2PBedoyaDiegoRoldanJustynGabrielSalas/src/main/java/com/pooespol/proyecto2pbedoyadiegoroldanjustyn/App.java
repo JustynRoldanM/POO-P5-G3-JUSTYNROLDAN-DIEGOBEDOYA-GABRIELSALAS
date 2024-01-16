@@ -18,12 +18,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("promociones"), 1037, 758);
+        scene = new Scene(loadFXML("inicio"), 1037, 758);
         stage.setScene(scene);
         stage.setResizable(false);
-        stage.setOnCloseRequest(event -> {
-            Platform.exit();  
-        });
         stage.show();
     }
 
@@ -34,6 +31,21 @@ public class App extends Application {
     public static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
+    }
+    
+      public static Stage abrirNuevaVentana(String fxml,double n,double m) throws IOException {
+        Stage nuevaVentana = new Stage();
+        Parent root = loadFXML(fxml);
+        Scene nuevaScene = new Scene(root, n, m);
+        nuevaVentana.setScene(nuevaScene);
+        nuevaVentana.setResizable(false);
+        nuevaVentana.show();
+        return nuevaVentana;
+    }
+
+    public static void cerrarVentanaActual() {
+         Stage stage = (Stage) scene.getWindow();
+         stage.close();
     }
 
     public static void main(String[] args) {

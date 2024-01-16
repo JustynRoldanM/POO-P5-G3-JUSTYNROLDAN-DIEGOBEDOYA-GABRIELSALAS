@@ -113,11 +113,12 @@ public class PromocionesController implements Initializable {
                 public void run() {
                    Promocion promo =promos.get(i);
                    try (FileInputStream f = new FileInputStream("src/main/resources/images/posicion.png")) {
-                     Image img = new Image(f, 30, 30, false, false);
+                     Image img = new Image(f, 33, 33, false, false);
                      ImageView im = new ImageView(img);
                      im.setPreserveRatio(true);
                      im.setSmooth(true);
                      im.setCache(true);
+                     im.setCursor(Cursor.HAND);
                      im.setLayoutX(promo.getCoordX());
                      im.setLayoutY(promo.getCoordY());
                      p.getChildren().add(im);

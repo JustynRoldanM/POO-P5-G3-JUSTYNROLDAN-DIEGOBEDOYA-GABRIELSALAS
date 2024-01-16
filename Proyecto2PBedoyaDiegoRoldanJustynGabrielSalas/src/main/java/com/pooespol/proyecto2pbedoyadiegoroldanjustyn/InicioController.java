@@ -80,7 +80,9 @@ public class InicioController implements Initializable{
     }
     
     public void cambiarABienvenido() throws IOException{
-        App.setRoot("bienvenido");
+        Stage ventanaActual = (Stage) imgUser.getScene().getWindow();
+        ventanaActual.close();
+        App.abrirNuevaVentana("bienvenido", 1037, 758);
     }
     
     
@@ -120,14 +122,7 @@ public class InicioController implements Initializable{
     }
     
     public static void abrirReservasCreadas() throws IOException{
-        Stage ventana2 = new Stage();
-        Scene scene = new Scene(App.loadFXML("reservasCreadas"),370,480);
-        ventana2.setScene(scene);
-        ventana2.setResizable(false);
-        ventana2.setOnCloseRequest(e ->{
-            e.consume();
-        });
-        ventana2.show();
+        App.abrirNuevaVentana("reservasCreadas", 370, 480);
     }
     
     public Cliente encontrarCliente(String user,String pass){

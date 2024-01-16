@@ -57,18 +57,23 @@ public class BienvenidoController implements Initializable {
         setearLabels();
         
         btnPromociones.setOnAction(e ->{
+            Stage ventanaActual = (Stage) btnPromociones.getScene().getWindow();
+            ventanaActual.close();
             try {
-                App.setRoot("promociones");
+                App.abrirNuevaVentana("promociones", 1037, 758);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
         });
         btnReservar.setOnAction(e ->{
+            Stage ventanaActual = (Stage) btnPromociones.getScene().getWindow();
+            ventanaActual.close();
             try {
-                App.setRoot("reservas");
+                App.abrirNuevaVentana("reservas", 1037, 758);
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+
         });
         
     }    

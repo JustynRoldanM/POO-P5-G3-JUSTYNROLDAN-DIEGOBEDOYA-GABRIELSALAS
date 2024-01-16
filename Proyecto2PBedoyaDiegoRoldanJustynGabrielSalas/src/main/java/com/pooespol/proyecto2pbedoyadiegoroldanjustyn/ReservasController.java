@@ -91,11 +91,9 @@ public class ReservasController implements Initializable {
     }
     
     public void cambiarAReservaVuelo() throws IOException{
-        Stage s = new Stage();
-        Scene scene= new Scene(App.loadFXML("reservaVuelo"),400,400);
-        s.setScene(scene);
-        s.setResizable(false);
-        s.show();
+        Stage ventanaActual = (Stage) cbxOrigen.getScene().getWindow();
+        ventanaActual.close();
+        App.abrirNuevaVentana("reservaVuelo", 700, 700);
     }
     
     

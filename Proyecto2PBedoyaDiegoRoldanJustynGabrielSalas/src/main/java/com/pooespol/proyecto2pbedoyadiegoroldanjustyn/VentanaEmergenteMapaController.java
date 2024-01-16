@@ -47,18 +47,10 @@ public class VentanaEmergenteMapaController implements Initializable {
     
     @FXML
     private Button btnCerrar;
-    
-    @FXML
-    private ImageView img;
+   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try(FileInputStream f =new FileInputStream("src/main/resources/images/viaL.jpg")){
-            Image i = new Image(f);
-            img.setImage(i);
-        }catch (IOException ex) {
-            ex.printStackTrace();
-        }
         lbl1.setText(promocion.getPais());
         lbl2.setText(promocion.getCodigoPromocion());
         lbl3.setText("Descuento: "+promocion.getDescuento()+"%");
