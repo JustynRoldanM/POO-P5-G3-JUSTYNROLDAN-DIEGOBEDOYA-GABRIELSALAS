@@ -1,0 +1,4 @@
+nombre,tipo,lista de características(separados por -,porcentaje
+VIAJA LIGERO,S,1 equipaje de mano (10 kg)-Acumula 1000 millas,0
+MÁS CONFORT,S,1 equipaje de mano (10 kg)-Acumula 1000 millas-1 equipaje de bodega (23kg)-Elige asiento,15
+MÁS FLEXIBILIDAD,L,1 equipaje de mano (10 kg)-Acumula 1000 millas-1 equipaje de bodega (23kg)-Elige asiento plus-Cambia vuelo gratis por una ocasión,30

@@ -11,6 +11,7 @@ modelo\Reserva.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\InicioController.class
 modelo\Sistema.class
 module-info.class
+com\pooespol\proyecto2pbedoyadiegoroldanjustyn\TarifasController.class
 modelo\Vuelo.class
 modelo\FormaPago.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\VentanaEmergenteMapaController.class

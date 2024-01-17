@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -16,33 +17,39 @@
          <content>
             <VBox prefHeight="700.0" prefWidth="698.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="161.0" prefWidth="698.0" style="-fx-background-color: linear-gradient(to bottom, #3498db, #9b59b6);;">
                      <children>
-                        <Label fx:id="titulo" alignment="CENTER" prefHeight="55.0" prefWidth="587.0" text="Label" textFill="#cf6f43">
+                        <Label fx:id="titulo" alignment="CENTER" prefHeight="55.0" prefWidth="587.0" text="Label" textFill="WHITE">
                            <font>
                               <Font name="Bernard MT Condensed" size="34.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                     </padding>
                   </HBox>
-                  <HBox prefHeight="41.0" prefWidth="698.0" spacing="10.0">
+                  <HBox prefHeight="78.0" prefWidth="698.0" spacing="10.0">
                      <children>
-                        <Label fx:id="ordenar" prefHeight="36.0" prefWidth="174.0" text="Label">
+                        <Label fx:id="ordenar" prefHeight="26.0" prefWidth="126.0" text="Label">
                            <font>
-                              <Font name="Bernard MT Condensed" size="16.0" />
+                              <Font name="Bernard MT Condensed" size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText="Ordenar por: ">
+                        <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText=" ">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ComboBox>
                      </children>
                      <padding>
-                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
                      </padding>
                   </HBox>
-                  <VBox fx:id="contenedorVB" prefHeight="537.0" prefWidth="698.0" />
+                  <VBox fx:id="contenedorVB" prefHeight="468.0" prefWidth="698.0" />
                </children>
             </VBox>
          </content>

@@ -1,12 +1,13 @@
 
 package modelo;
 
+import com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController;
+
 /**
  *
  * @author Justyn Roldan
  */
-public class Vuelo {
-    private String fechaVuelo;
+public class Vuelo implements Comparable<Vuelo>{
     private String origen;
     private String destino;
     private double duracionHoras;
@@ -16,8 +17,7 @@ public class Vuelo {
     private String codigoAvion;
     private double precioVuelo;
 
-    public Vuelo(String fechaVuelo, String origen, String destino, double duracionHoras, String horaSalida, String horaLlegada, String numVuelo, String codigoAvion, double precioVuelo) {
-        this.fechaVuelo = fechaVuelo;
+    public Vuelo(String origen, String destino, double duracionHoras, String horaSalida, String horaLlegada, String numVuelo, String codigoAvion, double precioVuelo) {
         this.origen = origen;
         this.destino = destino;
         this.duracionHoras = duracionHoras;
@@ -26,14 +26,6 @@ public class Vuelo {
         this.numVuelo = numVuelo;
         this.codigoAvion = codigoAvion;
         this.precioVuelo = precioVuelo;
-    }
-
-    public String getFechaVuelo() {
-        return fechaVuelo;
-    }
-
-    public void setFechaVuelo(String fechaVuelo) {
-        this.fechaVuelo = fechaVuelo;
     }
 
     public String getOrigen() {
@@ -99,5 +91,15 @@ public class Vuelo {
     public void setPrecioVuelo(double precioVuelo) {
         this.precioVuelo = precioVuelo;
     }
-    
+
+    @Override
+    public int compareTo(Vuelo o) {
+        int comparacion=0;
+        if(ReservaVueloController.getValorCB().equals("precio")){
+            comparacion= Double.compare(this.precioVuelo,o.getPrecioVuelo());
+        }else{
+            comparacion = Double.compare(this.duracionHoras,o.getDuracionHoras());
+        }
+        return comparacion;
+    }
 }

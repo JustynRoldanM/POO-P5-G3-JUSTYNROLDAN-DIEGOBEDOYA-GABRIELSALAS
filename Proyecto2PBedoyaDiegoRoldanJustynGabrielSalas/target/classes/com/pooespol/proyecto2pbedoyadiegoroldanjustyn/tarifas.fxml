@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Bloom?>
@@ -11,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.TarifasController">
    <children>
       <ScrollPane prefHeight="700.0" prefWidth="700.0">
          <content>
@@ -32,24 +30,7 @@
                         <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
                      </padding>
                   </HBox>
-                  <HBox prefHeight="78.0" prefWidth="698.0" spacing="10.0">
-                     <children>
-                        <Label fx:id="ordenar" prefHeight="26.0" prefWidth="126.0" text="Label">
-                           <font>
-                              <Font name="Bernard MT Condensed" size="20.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText=" ">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </ComboBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
-                     </padding>
-                  </HBox>
-                  <VBox fx:id="contenedorVB" prefHeight="468.0" prefWidth="698.0" />
+                  <VBox fx:id="contenedorVB" prefHeight="542.0" prefWidth="698.0" />
                </children>
             </VBox>
          </content>

@@ -11,6 +11,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,6 +26,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import modelo.Cliente;
 import modelo.Vuelo;
 
@@ -53,6 +55,9 @@ public class ReservaVueloController implements Initializable {
     
     @FXML
     private VBox contenedorVB;
+    
+    
+    private static String valorCB="";
     @Override
     public void initialize(URL url, ResourceBundle rb) {   
         llenarListaVuelos();
@@ -61,6 +66,16 @@ public class ReservaVueloController implements Initializable {
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
+        cbFiltro.setStyle(
+                "-fx-font-size: 14px; " +
+                "-fx-background-color: #f4f4f4; " +
+                "-fx-border-color: #a0a0a0; " +
+                "-fx-border-width: 2px; " +
+                "-fx-border-radius: 5px; " +
+                "-fx-padding: 5px 10px; " +
+                "-fx-effect: innershadow(gaussian, #e0e0e0, 10, 0, 0, 0);"
+        );
+        filtroComboBox();
     }    
     
     public void llenarListaVuelos(){
@@ -69,7 +84,7 @@ public class ReservaVueloController implements Initializable {
             br.readLine();
             while((linea=br.readLine())!=null){
                 String[] info = linea.split(";");
-                vuelos.add(new Vuelo(info[3],info[1],info[2],Double.valueOf(info[4]),info[5],info[6],info[0],info[7],Double.valueOf(info[8])));
+                vuelos.add(new Vuelo(info[1],info[2],Double.valueOf(info[3]),info[4],info[5],info[0],info[6],Double.valueOf(info[7])));
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -80,56 +95,70 @@ public class ReservaVueloController implements Initializable {
         titulo.setText("Selecciona tu vuelo "+origen+" - "+destino);
         ordenar.setText("Ordenar por: ");
         for(Vuelo v:vuelos){
-            VBox vb = new VBox();
-            vb.setStyle("-fx-border-color: black;-fx-border-width: 2px;-fx-padding: 10px;");
-            HBox duracion = new HBox();
-            HBox hora = new HBox();
-            HBox precio = new HBox();
-            HBox espacioTop = new HBox();
-            HBox espacioBottom = new HBox();
-            espacioBottom.setPadding(new Insets(20,20,20,20));
-            espacioTop.setPadding(new Insets(20,20,20,20));
-            duracion.setAlignment(Pos.CENTER);
-            hora.setAlignment(Pos.CENTER);
-            precio.setAlignment(Pos.CENTER);
-            duracion.setSpacing(55);
-            hora.setSpacing(5);
-            precio.setSpacing(55);
-            Label lblDuracion = new Label("Duracion: "+v.getDuracionHoras()+" horas");
-            Label lblHoraSalida = new Label(v.getHoraSalida());
-            Label lblHoraLlegada = new Label(v.getHoraLlegada());
-            Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
-            vb.setPadding(new Insets(42,42,42,42));
-            FileInputStream f = new FileInputStream("src/main/resources/images/menos.png");
-            Image i = new Image(f,400,45,false,false);
-            ImageView img= new ImageView(i);
-            img.setPreserveRatio(true);
-            duracion.getChildren().add(lblDuracion);
-            hora.getChildren().addAll(lblHoraSalida,img,lblHoraLlegada);
-            precio.getChildren().add(lblPrecio);
-            contenedorVB.getChildren().addAll(espacioTop,duracion,hora,precio,espacioBottom);
-        }
-    }
-
-    public ArrayList<Vuelo> cargarVuelosXfechaVOrigen(){
-        ArrayList<Vuelo> vuelos = new ArrayList<>();
-        for(Vuelo v: vuelos){
-            if(v.getFechaVuelo().equals(fechaVueloSalida)){
-                vuelos.add(v);
+            if(v.getOrigen().equals(origen) && v.getDestino().equals(destino)){
+                VBox vb = new VBox();
+                vb.setStyle("-fx-border-color: black;");
+                HBox duracion = new HBox();
+                HBox hora = new HBox();
+                HBox precio = new HBox();
+                HBox espacioTop = new HBox();
+                HBox espacioBottom = new HBox();
+                espacioBottom.setPadding(new Insets(20,20,20,20));
+                espacioTop.setPadding(new Insets(20,20,20,20));
+                duracion.setAlignment(Pos.CENTER);
+                hora.setAlignment(Pos.CENTER);
+                precio.setAlignment(Pos.CENTER);
+                duracion.setSpacing(55);
+                hora.setSpacing(5);
+                precio.setSpacing(55);
+                Label lblDuracion = new Label("Duracion: "+v.getDuracionHoras()+" horas");
+                Label lblHoraSalida = new Label(v.getHoraSalida());
+                Label lblHoraLlegada = new Label(v.getHoraLlegada());
+                Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
+                vb.setPadding(new Insets(42,42,42,42));
+                FileInputStream f = new FileInputStream("src/main/resources/images/menos.png");
+                Image i = new Image(f,400,45,false,false);
+                ImageView img= new ImageView(i);
+                img.setPreserveRatio(true);
+                duracion.getChildren().add(lblDuracion);
+                hora.getChildren().addAll(lblHoraSalida,img,lblHoraLlegada);
+                precio.getChildren().add(lblPrecio);
+                contenedorVB.getChildren().addAll(espacioTop,duracion,hora,precio,espacioBottom);
             }
         }
-        return vuelos;
     }
     
-    public ArrayList<Vuelo> cargarVuelosXfechaVDestino(){
-        ArrayList<Vuelo> vuelos = new ArrayList<>();
-        for(Vuelo v: vuelos){
-            if(v.getFechaVuelo().equals(fechaVueloRegreso)){
-                vuelos.add(v);
-            }
-        }
-        return vuelos;
+    public void cargarVentanaTarifas() throws IOException{
+        Stage s = (Stage)contenedorVB.getScene().getWindow();
+        s.close();
+        App.abrirNuevaVentana("tarifas", 700, 700);
     }
+    
+    public void filtroComboBox(){
+        cbFiltro.getItems().addAll("precio","duración");
+        cbFiltro.setOnAction(e ->{
+            ReservaVueloController.setValorCB((String) cbFiltro.getValue());
+            if(cbFiltro.getValue().equals("precio")){        
+                contenedorVB.getChildren().clear();
+                try {
+                    Collections.sort(vuelos);
+                    contenidoDinamicoVuelos(vuelos);
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }else{
+                contenedorVB.getChildren().clear();
+                Collections.sort(vuelos);
+                try {
+                    contenidoDinamicoVuelos(vuelos);
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+    }
+    
+
 
     public static String getFechaVueloRegreso() {
         return fechaVueloRegreso;
@@ -170,6 +199,14 @@ public class ReservaVueloController implements Initializable {
     public static void setDestino(String destino) {
         ReservaVueloController.destino = destino;
     }
+
+    public static String getValorCB() {
+        return valorCB;
+    }
+
+    public static void setValorCB(String valorCB) {
+        ReservaVueloController.valorCB = valorCB;
+    }
     
-   
+    
 }

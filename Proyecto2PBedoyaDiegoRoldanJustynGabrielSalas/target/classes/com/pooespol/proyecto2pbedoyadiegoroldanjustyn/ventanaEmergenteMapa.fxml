@@ -41,7 +41,7 @@
                   <Bloom threshold="0.84" />
                </effect>
             </Label>
-            <Button fx:id="btnCerrar" layoutX="214.0" layoutY="150.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: #E28232; -fx-border-color: black;" text="Cerrar">
+            <Button fx:id="btnCerrar" layoutX="214.0" layoutY="150.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="77.0" style="-fx-background-color: linear-gradient(to bottom, #8e44ad, #e74c3c); -fx-border-color: linear-gradient(to bottom, #8e44ad, white, #e74c3c);" textFill="#fffbfb">
                <font>
                   <Font name="Bernard MT Condensed" size="15.0" />
                </font>
@@ -72,6 +72,14 @@
                      </stops>
                   </LinearGradient>
                </textFill>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="231.0" layoutY="153.0" prefHeight="25.0" prefWidth="43.0" text="Cerrar" textFill="WHITE" textOverrun="LEADING_ELLIPSIS">
+               <font>
+                  <Font name="Bernard MT Condensed" size="17.0" />
+               </font>
+               <effect>
+                  <Bloom />
+               </effect>
             </Label>
          </children>
       </Pane>
