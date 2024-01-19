@@ -19,6 +19,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -59,7 +60,8 @@ public class ReservaVueloController implements Initializable {
     
     private static String valorCB="";
     @Override
-    public void initialize(URL url, ResourceBundle rb) {   
+    public void initialize(URL url, ResourceBundle rb) {  
+        contenedorVB.setPadding(new Insets(20,20,20,20));
         llenarListaVuelos();
         try {
             contenidoDinamicoVuelos(vuelos);
@@ -67,13 +69,9 @@ public class ReservaVueloController implements Initializable {
             ex.printStackTrace();
         }
         cbFiltro.setStyle(
-                "-fx-font-size: 14px; " +
-                "-fx-background-color: #f4f4f4; " +
-                "-fx-border-color: #a0a0a0; " +
-                "-fx-border-width: 2px; " +
+                "-fx-font-size: 15px; " +
                 "-fx-border-radius: 5px; " +
-                "-fx-padding: 5px 10px; " +
-                "-fx-effect: innershadow(gaussian, #e0e0e0, 10, 0, 0, 0);"
+                "-fx-padding: 5px 5px; " 
         );
         filtroComboBox();
     }    
@@ -90,40 +88,85 @@ public class ReservaVueloController implements Initializable {
             e.printStackTrace();
         }
     }
+    public static ArrayList<String> colores() {
+        ArrayList<String> colores = new ArrayList<>();
+
+        colores.add("#FF6F61");  // Coral
+        colores.add("#FFD700");  // Oro
+        colores.add("#8A2BE2");  // Azul violeta
+        colores.add("#32CD32");  // Verde lima
+        colores.add("#FF8C00");  // Naranja oscuro
+        colores.add("#8B4513");  // Marrón oscuro
+        colores.add("#9370DB");  // Púrpura medio
+        colores.add("#20B2AA");  // Verde azulado
+        colores.add("#FF6347");  // Tomate
+        colores.add("#4B0082");  // Índigo oscuro
+        colores.add("#FF4500");  // Rojo anaranjado
+        colores.add("#00CED1");  // Turquesa medio
+        colores.add("#9932CC");  // Púrpura oscuro
+        colores.add("#00FF7F");  // Verde primavera
+        colores.add("#DAA520");  // Oro antiguo
+        colores.add("#FF69B4");  // Rosa intenso
+        colores.add("#6A5ACD");  // Azul pizarra
+        colores.add("#8B008B");  // Magenta oscuro
+        colores.add("#00FA9A");  // Verde césped
+        colores.add("#CD853F");  // Bronceado
+
+        return colores;
+    }
     
     public void contenidoDinamicoVuelos(ArrayList<Vuelo> vuelos) throws FileNotFoundException{
+        ArrayList<String> colores= colores();
         titulo.setText("Selecciona tu vuelo "+origen+" - "+destino);
         ordenar.setText("Ordenar por: ");
+        int j=0;
         for(Vuelo v:vuelos){
             if(v.getOrigen().equals(origen) && v.getDestino().equals(destino)){
                 VBox vb = new VBox();
-                vb.setStyle("-fx-border-color: black;");
+                vb.setStyle("-fx-background-color: "+colores.get(j) +
+                            "; -fx-border-color: "+colores.get(j)+
+                            "; -fx-border-width: 2px;" +
+                            "-fx-border-radius: 10px;");
+                HBox bottom = new HBox();
+                HBox top = new HBox();
+                bottom.setPadding(new Insets(10,10,10,10));
+                top.setPadding(new Insets(5,5,5,5));
                 HBox duracion = new HBox();
                 HBox hora = new HBox();
                 HBox precio = new HBox();
-                HBox espacioTop = new HBox();
-                HBox espacioBottom = new HBox();
-                espacioBottom.setPadding(new Insets(20,20,20,20));
-                espacioTop.setPadding(new Insets(20,20,20,20));
                 duracion.setAlignment(Pos.CENTER);
                 hora.setAlignment(Pos.CENTER);
                 precio.setAlignment(Pos.CENTER);
-                duracion.setSpacing(55);
-                hora.setSpacing(5);
-                precio.setSpacing(55);
                 Label lblDuracion = new Label("Duracion: "+v.getDuracionHoras()+" horas");
                 Label lblHoraSalida = new Label(v.getHoraSalida());
                 Label lblHoraLlegada = new Label(v.getHoraLlegada());
                 Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
-                vb.setPadding(new Insets(42,42,42,42));
+                lblHoraSalida.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
+                lblDuracion.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 20px; -fx-font-weight: bold;");
+                lblHoraLlegada.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
+                lblPrecio.setStyle("-fx-text-fill: white; -fx-font-family: 'Helvetica'; -fx-font-size: 20px; -fx-font-weight: bold;");
+                Bloom b = new Bloom();
+                lblPrecio.setEffect(b);
+                vb.setPadding(new Insets(12,12,12,12));
+                vb.setSpacing(30);
                 FileInputStream f = new FileInputStream("src/main/resources/images/menos.png");
-                Image i = new Image(f,400,45,false,false);
+                Image i = new Image(f,150,150,false,false);
                 ImageView img= new ImageView(i);
                 img.setPreserveRatio(true);
-                duracion.getChildren().add(lblDuracion);
+                duracion.getChildren().add(lblDuracion);  
                 hora.getChildren().addAll(lblHoraSalida,img,lblHoraLlegada);
                 precio.getChildren().add(lblPrecio);
-                contenedorVB.getChildren().addAll(espacioTop,duracion,hora,precio,espacioBottom);
+                vb.setOnMouseClicked(e ->{
+                    TarifasController.setV(v);
+                    try {
+                        cargarVentanaTarifas();
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+                vb.getChildren().addAll(duracion,hora,precio);
+                contenedorVB.getChildren().addAll(top,vb,bottom);
+                j+=1;
             }
         }
     }
@@ -131,7 +174,7 @@ public class ReservaVueloController implements Initializable {
     public void cargarVentanaTarifas() throws IOException{
         Stage s = (Stage)contenedorVB.getScene().getWindow();
         s.close();
-        App.abrirNuevaVentana("tarifas", 700, 700);
+        App.abrirNuevaVentana("tarifas", 550, 700);
     }
     
     public void filtroComboBox(){

@@ -13,10 +13,11 @@ public class Tarifa {
     private ArrayList<String> caracteristicas= new ArrayList<>();
     private double incremento;
 
-    public Tarifa(String nombreTarifa, String descripcion, double incremento) {
+    public Tarifa(String nombreTarifa, String descripcion, double incremento,ArrayList<String> caracteristicas) {
         this.nombreTarifa = nombreTarifa;
         this.descripcion = descripcion;
         this.incremento = incremento;
+        this.caracteristicas=caracteristicas;
     }
 
     public String getNombreTarifa() {

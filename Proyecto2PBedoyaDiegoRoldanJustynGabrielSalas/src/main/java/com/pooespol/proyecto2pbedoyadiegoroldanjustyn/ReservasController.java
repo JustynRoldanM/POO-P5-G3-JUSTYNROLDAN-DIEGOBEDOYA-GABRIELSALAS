@@ -93,7 +93,7 @@ public class ReservasController implements Initializable {
     public void cambiarAReservaVuelo() throws IOException{
         Stage ventanaActual = (Stage) cbxOrigen.getScene().getWindow();
         ventanaActual.close();
-        App.abrirNuevaVentana("reservaVuelo", 700, 700);
+        App.abrirNuevaVentana("reservaVuelo", 650, 700);
     }
     
     
