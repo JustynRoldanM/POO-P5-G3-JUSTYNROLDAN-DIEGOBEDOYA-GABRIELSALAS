@@ -1,0 +1,1 @@
+CodReserva,cedulaCliente,ciudadOrigen,ciudadDestino,fechasalida,fechaRegreso,numPasajeros,numVueloIda,numVueloRegreso,tipoTarifaIda,TipoTarifaRegreso

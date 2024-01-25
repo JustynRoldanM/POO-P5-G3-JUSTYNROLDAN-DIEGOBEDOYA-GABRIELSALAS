@@ -9,15 +9,24 @@ import java.util.ArrayList;
  */
 public class Tarifa {
     private String nombreTarifa;
-    private String descripcion;
     private ArrayList<String> caracteristicas= new ArrayList<>();
     private double incremento;
+    private TipoTarifa tipo;
 
-    public Tarifa(String nombreTarifa, String descripcion, double incremento,ArrayList<String> caracteristicas) {
+    public Tarifa(String nombreTarifa, TipoTarifa tipo, double incremento,ArrayList<String> caracteristicas) {
         this.nombreTarifa = nombreTarifa;
-        this.descripcion = descripcion;
+        this.tipo=tipo;
         this.incremento = incremento;
         this.caracteristicas=caracteristicas;
+        this.tipo=tipo;
+    }
+
+    public TipoTarifa getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoTarifa tipo) {
+        this.tipo = tipo;
     }
 
     public String getNombreTarifa() {
@@ -26,14 +35,6 @@ public class Tarifa {
 
     public void setNombreTarifa(String nombreTarifa) {
         this.nombreTarifa = nombreTarifa;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public ArrayList<String> getCaracteristicas() {

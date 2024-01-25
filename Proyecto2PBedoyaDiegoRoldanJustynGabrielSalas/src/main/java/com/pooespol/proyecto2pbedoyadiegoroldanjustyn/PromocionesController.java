@@ -75,7 +75,7 @@ public class PromocionesController implements Initializable {
             popupStage.show();
         }
         
-        public ArrayList<Promocion> cargarPromociones(){
+        public static ArrayList<Promocion> cargarPromociones(){
             ArrayList<Promocion> promociones = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/promociones.txt"))) {
                     String linea;

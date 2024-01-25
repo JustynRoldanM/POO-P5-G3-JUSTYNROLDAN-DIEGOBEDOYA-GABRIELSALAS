@@ -6,7 +6,6 @@ package com.pooespol.proyecto2pbedoyadiegoroldanjustyn;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +20,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import modelo.Tarifa;
 import modelo.TipoTarifa;
 import modelo.Vuelo;
@@ -29,10 +27,22 @@ import modelo.Vuelo;
 /**
  * FXML Controller class
  *
- * @author Justyn Roldan
+ * @author Justin Roldan
  */
-public class TarifasController implements Initializable {
-    private static Vuelo vueloIda;
+public class TarifaVueloRegresoController implements Initializable {
+
+    /**
+     * Initializes the controller class.
+     */
+     private static Vuelo vueloRegreso;
+
+    public static Vuelo getVueloRegreso() {
+        return vueloRegreso;
+    }
+
+    public static void setVueloRegreso(Vuelo vueloRegreso) {
+        TarifaVueloRegresoController.vueloRegreso = vueloRegreso;
+    }
     
     public static ArrayList<Tarifa> tarifas;
     @FXML
@@ -49,13 +59,6 @@ public class TarifasController implements Initializable {
         titulo.setText("Tarifas");
     }    
 
-    public static Vuelo getVueloIda() {
-        return vueloIda;
-    }
-
-    public static void setVueloIda(Vuelo vueloIda) {
-        TarifasController.vueloIda = vueloIda;
-    }
 
     public static ArrayList<String> cargarColores(){
         ArrayList<String> coloresVintage = new ArrayList<>();
@@ -129,7 +132,7 @@ public class TarifasController implements Initializable {
             }
             vb.getChildren().add(vbCaracteristicas);
 
-            Label lbl3 = new Label(String.valueOf(vueloIda.getPrecioVuelo() + vueloIda.getPrecioVuelo() * t.getIncremento()));
+            Label lbl3 = new Label(String.valueOf(vueloRegreso.getPrecioVuelo() + vueloRegreso.getPrecioVuelo() * t.getIncremento()));
             lbl3.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
             hbPrecio.setStyle("-fx-background-color: "+colores.get(j+3)+";");
             hbPrecio.getChildren().add(lbl3);
@@ -139,14 +142,7 @@ public class TarifasController implements Initializable {
             contenedorVB.setSpacing(15);
             contenedorVB.getChildren().add(vb);
             contenedorVB.setOnMouseClicked(e->{
-                Stage s = (Stage)contenedorVB.getScene().getWindow();
-                s.close();
-                vueloIda.setPrecioVuelo(vueloIda.getPrecioVuelo()*(1+t.getIncremento()));
-                try {
-                    App.abrirNuevaVentana("vuelosRegreso",640 ,700);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+                vueloRegreso.setPrecioVuelo(vueloRegreso.getPrecioVuelo()*(1+t.getIncremento()));
             });
             j+=1;
         }
@@ -201,4 +197,5 @@ public class TarifasController implements Initializable {
         }
         return null;
     }
+    
 }

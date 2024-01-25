@@ -106,7 +106,7 @@ public class InicioController implements Initializable{
     }
   
     
-    public ArrayList<Cliente> cargarClientes(){
+    public static ArrayList<Cliente> cargarClientes(){
         ArrayList<Cliente> clientes = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/clientes.txt"))){
             String linea;
@@ -119,6 +119,16 @@ public class InicioController implements Initializable{
             e.printStackTrace();
         }
         return clientes;
+    }
+    
+    public static Cliente buscarCliente(long cedula){
+        ArrayList<Cliente> clientes=cargarClientes();
+        for(Cliente c: clientes){
+            if(c.getCedula()==cedula){
+                return c;
+            }
+        }
+        return null;
     }
     
     public static void abrirReservasCreadas() throws IOException{

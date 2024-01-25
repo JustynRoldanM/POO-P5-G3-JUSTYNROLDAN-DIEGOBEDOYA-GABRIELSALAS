@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package com.pooespol.proyecto2pbedoyadiegoroldanjustyn;
 
 import java.io.BufferedReader;
@@ -22,29 +19,24 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import modelo.Cliente;
 import modelo.Vuelo;
 
 /**
  * FXML Controller class
  *
- * @author Justyn Roldan
+ * @author Justin Roldan
  */
-public class ReservaVueloController implements Initializable {
-    
+public class VuelosRegresoController implements Initializable {
     private static ArrayList<Vuelo> vuelos = new ArrayList<>();
     private static String fechaVueloRegreso;
     private static String fechaVueloSalida;
     private static int cantidadPasajeros;
     private static String origen;
     private static String destino;
-    
+
     @FXML
     private Label titulo;
     
@@ -115,7 +107,15 @@ public class ReservaVueloController implements Initializable {
     }
     public static ArrayList<String> colores() {
         ArrayList<String> colores = new ArrayList<>();
-
+        colores.add("#00CED1");  // Turquesa medio
+        colores.add("#9932CC");  // Púrpura oscuro
+        colores.add("#00FF7F");  // Verde primavera
+        colores.add("#DAA520");  // Oro antiguo
+        colores.add("#FF69B4");  // Rosa intenso
+        colores.add("#6A5ACD");  // Azul pizarra
+        colores.add("#8B008B");  // Magenta oscuro
+        colores.add("#00FA9A");  // Verde césped
+        colores.add("#CD853F");  // Bronceado
         colores.add("#FF6F61");  // Coral
         colores.add("#FFD700");  // Oro
         colores.add("#8A2BE2");  // Azul violeta
@@ -127,15 +127,7 @@ public class ReservaVueloController implements Initializable {
         colores.add("#FF6347");  // Tomate
         colores.add("#4B0082");  // Índigo oscuro
         colores.add("#FF4500");  // Rojo anaranjado
-        colores.add("#00CED1");  // Turquesa medio
-        colores.add("#9932CC");  // Púrpura oscuro
-        colores.add("#00FF7F");  // Verde primavera
-        colores.add("#DAA520");  // Oro antiguo
-        colores.add("#FF69B4");  // Rosa intenso
-        colores.add("#6A5ACD");  // Azul pizarra
-        colores.add("#8B008B");  // Magenta oscuro
-        colores.add("#00FA9A");  // Verde césped
-        colores.add("#CD853F");  // Bronceado
+       
 
         return colores;
     }
@@ -181,8 +173,8 @@ public class ReservaVueloController implements Initializable {
                 duracion.getChildren().add(lblDuracion);  
                 hora.getChildren().addAll(lblHoraSalida,img,lblHoraLlegada);
                 precio.getChildren().add(lblPrecio);
-                vb.setOnMouseClicked(e ->{
-                    TarifasController.setVueloIda(v);
+                vb.setOnMouseClicked(e ->{          
+                    TarifaVueloRegresoController.setVueloRegreso(v);
                     try {
                         cargarVentanaTarifas();
                     } catch (IOException ex) {
@@ -199,7 +191,7 @@ public class ReservaVueloController implements Initializable {
     public void cargarVentanaTarifas() throws IOException{
         Stage s = (Stage)contenedorVB.getScene().getWindow();
         s.close();
-        App.abrirNuevaVentana("tarifas", 550, 700);
+        App.abrirNuevaVentana("tarifaVueloRegreso", 550, 700);
     }
     
     public void filtroComboBox(){
@@ -233,7 +225,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setFechaVueloRegreso(String fechaVueloRegreso) {
-        ReservaVueloController.fechaVueloRegreso = fechaVueloRegreso;
+        VuelosRegresoController.fechaVueloRegreso = fechaVueloRegreso;
     }
 
     public static String getFechaVueloSalida() {
@@ -241,7 +233,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setFechaVueloSalida(String fechaVueloSalida) {
-        ReservaVueloController.fechaVueloSalida = fechaVueloSalida;
+        VuelosRegresoController.fechaVueloSalida = fechaVueloSalida;
     }
 
     public static int getCantidadPasajeros() {
@@ -249,7 +241,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setCantidadPasajeros(int cantidadPasajeros) {
-        ReservaVueloController.cantidadPasajeros = cantidadPasajeros;
+        VuelosRegresoController.cantidadPasajeros = cantidadPasajeros;
     }
 
     public static String getOrigen() {
@@ -257,7 +249,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setOrigen(String origen) {
-        ReservaVueloController.origen = origen;
+        VuelosRegresoController.origen = origen;
     }
 
     public static String getDestino() {
@@ -265,7 +257,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setDestino(String destino) {
-        ReservaVueloController.destino = destino;
+        VuelosRegresoController.destino= destino;
     }
 
     public static String getValorCB() {
@@ -273,8 +265,7 @@ public class ReservaVueloController implements Initializable {
     }
 
     public static void setValorCB(String valorCB) {
-        ReservaVueloController.valorCB = valorCB;
+        VuelosRegresoController.valorCB = valorCB;
     }
-    
     
 }

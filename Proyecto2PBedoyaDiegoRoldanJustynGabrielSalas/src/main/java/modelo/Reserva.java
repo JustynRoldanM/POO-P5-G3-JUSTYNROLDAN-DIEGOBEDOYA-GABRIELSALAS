@@ -8,17 +8,22 @@ package modelo;
 public class Reserva implements Pagable{
     private int codigoReserva;
     private Cliente cliente;
-    private Vuelo vuelo;
+    private Vuelo vueloIda;
+    private Vuelo vueloRgereso;
     private int numeroPasajeros;
-    private Tarifa tarifa;
+    private Tarifa tarifaIda;
+    private Tarifa tarifaRegreso;
 
-    public Reserva(int codigoReserva, Cliente cliente, Vuelo vuelo, int numeroPasajeros, Tarifa tarifa) {
+    public Reserva(int codigoReserva, Cliente cliente, Vuelo vueloIda, Vuelo vueloRgereso, int numeroPasajeros, Tarifa tarifaIda, Tarifa tarifaRegreso) {
         this.codigoReserva = codigoReserva;
         this.cliente = cliente;
-        this.vuelo = vuelo;
+        this.vueloIda = vueloIda;
+        this.vueloRgereso = vueloRgereso;
         this.numeroPasajeros = numeroPasajeros;
-        this.tarifa = tarifa;
+        this.tarifaIda = tarifaIda;
+        this.tarifaRegreso = tarifaRegreso;
     }
+    
     
     @Override
     public Pago generarTransaccion(){
@@ -42,12 +47,20 @@ public class Reserva implements Pagable{
         this.cliente = cliente;
     }
 
-    public Vuelo getVuelo() {
-        return vuelo;
+    public Vuelo getVueloIda() {
+        return vueloIda;
     }
 
-    public void setVuelo(Vuelo vuelo) {
-        this.vuelo = vuelo;
+    public void setVueloIda(Vuelo vueloIda) {
+        this.vueloIda = vueloIda;
+    }
+
+    public Vuelo getVueloRgereso() {
+        return vueloRgereso;
+    }
+
+    public void setVueloRgereso(Vuelo vueloRgereso) {
+        this.vueloRgereso = vueloRgereso;
     }
 
     public int getNumeroPasajeros() {
@@ -58,12 +71,20 @@ public class Reserva implements Pagable{
         this.numeroPasajeros = numeroPasajeros;
     }
 
-    public Tarifa getTarifa() {
-        return tarifa;
+    public Tarifa getTarifaIda() {
+        return tarifaIda;
     }
 
-    public void setTarifa(Tarifa tarifa) {
-        this.tarifa = tarifa;
+    public void setTarifaIda(Tarifa tarifaIda) {
+        this.tarifaIda = tarifaIda;
     }
-    
+
+    public Tarifa getTarifaRegreso() {
+        return tarifaRegreso;
+    }
+
+    public void setTarifaRegreso(Tarifa tarifaRegreso) {
+        this.tarifaRegreso = tarifaRegreso;
+    }
+
 }
