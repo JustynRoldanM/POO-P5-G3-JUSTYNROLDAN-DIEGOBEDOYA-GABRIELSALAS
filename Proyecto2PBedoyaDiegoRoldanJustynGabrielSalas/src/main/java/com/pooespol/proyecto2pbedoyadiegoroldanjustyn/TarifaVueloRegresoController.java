@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import modelo.Tarifa;
 import modelo.TipoTarifa;
 import modelo.Vuelo;
@@ -138,11 +139,25 @@ public class TarifaVueloRegresoController implements Initializable {
             hbPrecio.getChildren().add(lbl3);
             hbPrecio.setPadding(new Insets(15,15,15,15));
             vb.getChildren().add(hbPrecio);
-            
+            vb.setOnMouseClicked(e->{
+                Stage s =(Stage) contenedorVB.getScene().getWindow();
+                s.close();
+                try {
+                    App.abrirNuevaVentana("resumenReserva",800 ,800);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
             contenedorVB.setSpacing(15);
             contenedorVB.getChildren().add(vb);
             contenedorVB.setOnMouseClicked(e->{
                 vueloRegreso.setPrecioVuelo(vueloRegreso.getPrecioVuelo()*(1+t.getIncremento()));
+                ResumenReservaController.setVueloVenida(vueloRegreso);
+                try {
+                    App.abrirNuevaVentana("resumenReserva",800 ,800);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             });
             j+=1;
         }

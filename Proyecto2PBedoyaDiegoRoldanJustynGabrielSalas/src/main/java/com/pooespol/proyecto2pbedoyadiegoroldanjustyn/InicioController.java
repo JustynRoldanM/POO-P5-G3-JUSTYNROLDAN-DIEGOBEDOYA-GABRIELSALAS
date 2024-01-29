@@ -105,38 +105,14 @@ public class InicioController implements Initializable{
         }
     }
   
-    
-    public static ArrayList<Cliente> cargarClientes(){
-        ArrayList<Cliente> clientes = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/clientes.txt"))){
-            String linea;
-            br.readLine();
-            while((linea=br.readLine())!=null){
-                String[] info = linea.split(";");
-                clientes.add(new Cliente(Long.valueOf(info[0]),info[1],info[2],info[3],info[4]));
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        return clientes;
-    }
-    
-    public static Cliente buscarCliente(long cedula){
-        ArrayList<Cliente> clientes=cargarClientes();
-        for(Cliente c: clientes){
-            if(c.getCedula()==cedula){
-                return c;
-            }
-        }
-        return null;
-    }
+
     
     public static void abrirReservasCreadas() throws IOException{
         App.abrirNuevaVentana("reservasCreadas", 370, 480);
     }
     
     public Cliente encontrarCliente(String user,String pass){
-        ArrayList<Cliente> clientes = cargarClientes();
+        ArrayList<Cliente> clientes = Cliente.cargarClientes();
         for(Cliente c:clientes){
             if(c.getUser().equals(user) && c.getPassword().equals(pass)){
                 return c;
@@ -158,7 +134,7 @@ public class InicioController implements Initializable{
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-     return true;
+        return true;
         }
         else{
             lblMensajeLogin.setText("Usuario o contraseña incorrectas");

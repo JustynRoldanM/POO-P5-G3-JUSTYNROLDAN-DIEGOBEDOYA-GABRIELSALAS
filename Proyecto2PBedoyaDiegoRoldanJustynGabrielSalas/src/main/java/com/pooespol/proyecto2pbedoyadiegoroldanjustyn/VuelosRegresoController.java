@@ -31,9 +31,7 @@ import modelo.Vuelo;
  */
 public class VuelosRegresoController implements Initializable {
     private static ArrayList<Vuelo> vuelos = new ArrayList<>();
-    private static String fechaVueloRegreso;
-    private static String fechaVueloSalida;
-    private static int cantidadPasajeros;
+    
     private static String origen;
     private static String destino;
 
@@ -74,7 +72,7 @@ public class VuelosRegresoController implements Initializable {
             br.readLine();
             while((linea=br.readLine())!=null){
                 String[] info = linea.split(";");
-                vuelos.add(new Vuelo(info[1],info[2],Double.valueOf(info[3]),info[4],info[5],info[0],info[6],Double.valueOf(info[7])));
+                vuelos.add(new Vuelo(info[2],info[1],Double.valueOf(info[3]),info[4],info[5],info[0],info[6],Double.valueOf(info[7])));
             }
         }catch(IOException e){
             e.printStackTrace();
@@ -188,6 +186,8 @@ public class VuelosRegresoController implements Initializable {
         }
     }
     
+    
+    
     public void cargarVentanaTarifas() throws IOException{
         Stage s = (Stage)contenedorVB.getScene().getWindow();
         s.close();
@@ -218,31 +218,6 @@ public class VuelosRegresoController implements Initializable {
         });
     }
     
-
-
-    public static String getFechaVueloRegreso() {
-        return fechaVueloRegreso;
-    }
-
-    public static void setFechaVueloRegreso(String fechaVueloRegreso) {
-        VuelosRegresoController.fechaVueloRegreso = fechaVueloRegreso;
-    }
-
-    public static String getFechaVueloSalida() {
-        return fechaVueloSalida;
-    }
-
-    public static void setFechaVueloSalida(String fechaVueloSalida) {
-        VuelosRegresoController.fechaVueloSalida = fechaVueloSalida;
-    }
-
-    public static int getCantidadPasajeros() {
-        return cantidadPasajeros;
-    }
-
-    public static void setCantidadPasajeros(int cantidadPasajeros) {
-        VuelosRegresoController.cantidadPasajeros = cantidadPasajeros;
-    }
 
     public static String getOrigen() {
         return origen;

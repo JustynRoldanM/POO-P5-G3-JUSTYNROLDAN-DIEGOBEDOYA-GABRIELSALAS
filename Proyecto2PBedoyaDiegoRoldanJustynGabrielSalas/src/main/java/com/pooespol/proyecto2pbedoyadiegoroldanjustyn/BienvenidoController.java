@@ -57,8 +57,6 @@ public class BienvenidoController implements Initializable {
         setearLabels();
         
         btnPromociones.setOnAction(e ->{
-            Stage ventanaActual = (Stage) btnPromociones.getScene().getWindow();
-            ventanaActual.close();
             try {
                 App.abrirNuevaVentana("promociones", 1037, 758);
             } catch (IOException ex) {

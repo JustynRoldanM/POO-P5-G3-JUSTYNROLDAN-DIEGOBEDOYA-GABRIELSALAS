@@ -13,8 +13,11 @@ public class Reserva implements Pagable{
     private int numeroPasajeros;
     private Tarifa tarifaIda;
     private Tarifa tarifaRegreso;
+    private String fechaS;
+    private String fechaR;
+    private double totalReserva;
 
-    public Reserva(int codigoReserva, Cliente cliente, Vuelo vueloIda, Vuelo vueloRgereso, int numeroPasajeros, Tarifa tarifaIda, Tarifa tarifaRegreso) {
+    public Reserva(int codigoReserva, Cliente cliente, Vuelo vueloIda, Vuelo vueloRgereso, int numeroPasajeros, Tarifa tarifaIda, Tarifa tarifaRegreso, String fechaS, String fechaR, double totalReserva) {
         this.codigoReserva = codigoReserva;
         this.cliente = cliente;
         this.vueloIda = vueloIda;
@@ -22,7 +25,12 @@ public class Reserva implements Pagable{
         this.numeroPasajeros = numeroPasajeros;
         this.tarifaIda = tarifaIda;
         this.tarifaRegreso = tarifaRegreso;
+        this.fechaS = fechaS;
+        this.fechaR = fechaR;
+        this.totalReserva = totalReserva;
     }
+
+    
     
     
     @Override
@@ -54,6 +62,31 @@ public class Reserva implements Pagable{
     public void setVueloIda(Vuelo vueloIda) {
         this.vueloIda = vueloIda;
     }
+
+    public String getFechaS() {
+        return fechaS;
+    }
+
+    public void setFechaS(String fechaS) {
+        this.fechaS = fechaS;
+    }
+
+    public String getFechaR() {
+        return fechaR;
+    }
+
+    public void setFechaR(String fechaR) {
+        this.fechaR = fechaR;
+    }
+
+    public double getTotalReserva() {
+        return totalReserva;
+    }
+
+    public void setTotalReserva(double totalReserva) {
+        this.totalReserva = totalReserva;
+    }
+    
 
     public Vuelo getVueloRgereso() {
         return vueloRgereso;

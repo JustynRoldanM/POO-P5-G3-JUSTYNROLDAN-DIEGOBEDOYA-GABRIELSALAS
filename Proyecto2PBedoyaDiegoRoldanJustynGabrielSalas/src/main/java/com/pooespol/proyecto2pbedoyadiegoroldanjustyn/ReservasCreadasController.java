@@ -77,12 +77,12 @@ public class ReservasCreadasController implements Initializable {
             br.readLine();
             while ((linea = br.readLine()) != null) {
                 String[] info = linea.split(",");
-                Cliente c = InicioController.buscarCliente(Long.valueOf(info[1]));
+                Cliente c = Cliente.buscarCliente(Long.valueOf(info[1]));
                 Vuelo vIda = ReservaVueloController.buscarVueloa(info[7]);
                 Vuelo vRegreso = ReservaVueloController.buscarVueloa(info[8]);
                 Tarifa tIda = TarifasController.buscarTarifa(TipoTarifa.valueOf(info[9]));
                 Tarifa tRegreso = TarifasController.buscarTarifa(TipoTarifa.valueOf(info[10]));
-                Reserva r = new Reserva(Integer.valueOf(info[0]), c, vIda, vRegreso, Integer.valueOf(info[6]), tIda, tRegreso);
+                Reserva r = new Reserva(Integer.valueOf(info[0]), c, vIda, vRegreso, Integer.valueOf(info[6]), tIda, tRegreso,info[4],info[5],vIda.getPrecioVuelo()+vRegreso.getPrecioVuelo());
                 Label label = new Label(r.getCodigoReserva() + " - " + r.getCliente().getNombre());
                 HBox hBox = new HBox(label);
                 hBox.setAlignment(Pos.CENTER);

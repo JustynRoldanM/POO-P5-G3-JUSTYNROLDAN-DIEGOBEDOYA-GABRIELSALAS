@@ -15,9 +15,11 @@ module-info.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\TarifasController.class
 modelo\Vuelo.class
 modelo\FormaPago.class
+com\pooespol\proyecto2pbedoyadiegoroldanjustyn\ResumenReservaController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\VentanaEmergenteMapaController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\TarifaVueloRegresoController.class
 modelo\Tarifa.class
+com\pooespol\proyecto2pbedoyadiegoroldanjustyn\PopDetalleReservaController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\App.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\PromocionesController.class
 modelo\Cliente.class

@@ -39,9 +39,6 @@ import modelo.Vuelo;
 public class ReservaVueloController implements Initializable {
     
     private static ArrayList<Vuelo> vuelos = new ArrayList<>();
-    private static String fechaVueloRegreso;
-    private static String fechaVueloSalida;
-    private static int cantidadPasajeros;
     private static String origen;
     private static String destino;
     
@@ -227,30 +224,6 @@ public class ReservaVueloController implements Initializable {
     }
     
 
-
-    public static String getFechaVueloRegreso() {
-        return fechaVueloRegreso;
-    }
-
-    public static void setFechaVueloRegreso(String fechaVueloRegreso) {
-        ReservaVueloController.fechaVueloRegreso = fechaVueloRegreso;
-    }
-
-    public static String getFechaVueloSalida() {
-        return fechaVueloSalida;
-    }
-
-    public static void setFechaVueloSalida(String fechaVueloSalida) {
-        ReservaVueloController.fechaVueloSalida = fechaVueloSalida;
-    }
-
-    public static int getCantidadPasajeros() {
-        return cantidadPasajeros;
-    }
-
-    public static void setCantidadPasajeros(int cantidadPasajeros) {
-        ReservaVueloController.cantidadPasajeros = cantidadPasajeros;
-    }
 
     public static String getOrigen() {
         return origen;

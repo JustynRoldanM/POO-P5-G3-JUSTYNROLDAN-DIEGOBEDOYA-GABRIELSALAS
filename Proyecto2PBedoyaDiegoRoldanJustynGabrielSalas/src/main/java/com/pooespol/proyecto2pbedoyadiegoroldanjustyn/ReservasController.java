@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,25 +47,21 @@ public class ReservasController implements Initializable {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, 1);
         cantidadPasajeros.setValueFactory(valueFactory);
         cbxOrigen.getItems().addAll("Guayaquil","Quito","Cuenca");
-        cargarCombo();
+        cargarComboDestinos();
         aplicarEstilos();
         btnBuscar.setOnAction(e ->{
-            if(cbxOrigen.getValue()==null || cbxDestino.getValue()==null || fechaSalida==null || fechaRegreso==null || cantidadPasajeros.getValue()==null){
+            if(cbxOrigen.getValue()==null || cbxDestino.getValue()==null || fechaSalida.getValue()==null || fechaRegreso.getValue()==null || cantidadPasajeros.getValue()==null){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("ERROR");
                 alert.setHeaderText("Campos incompletos, porfavor llena toda la información");
                 alert.showAndWait();
             }else{
-                ReservaVueloController.setFechaVueloSalida(String.valueOf(fechaSalida.getValue()));
-                ReservaVueloController.setFechaVueloRegreso(String.valueOf(fechaRegreso.getValue()));
-                ReservaVueloController.setCantidadPasajeros((int) cantidadPasajeros.getValue()); 
                 ReservaVueloController.setDestino(String.valueOf(cbxDestino.getValue()));
-                ReservaVueloController.setOrigen(String.valueOf(cbxOrigen.getValue()));ReservaVueloController.setFechaVueloSalida(String.valueOf(fechaSalida.getValue()));
-                VuelosRegresoController.setFechaVueloSalida(String.valueOf(fechaSalida.getValue()));
-                VuelosRegresoController.setFechaVueloRegreso(String.valueOf(fechaRegreso.getValue()));
-                VuelosRegresoController.setCantidadPasajeros((int) cantidadPasajeros.getValue()); 
-                VuelosRegresoController.setDestino(String.valueOf(cbxDestino.getValue()));
-                VuelosRegresoController.setOrigen(String.valueOf(cbxOrigen.getValue()));
+                ReservaVueloController.setOrigen(String.valueOf(cbxOrigen.getValue()));
+                ResumenReservaController.setFechaS(String.valueOf(fechaSalida.getValue()));
+                ResumenReservaController.setFechaR(String.valueOf(fechaRegreso.getValue()));
+                VuelosRegresoController.setDestino(String.valueOf(cbxOrigen.getValue()));
+                VuelosRegresoController.setOrigen(String.valueOf(cbxDestino.getValue()));
                 try {
                     cambiarAReservaVuelo();
                 } catch (IOException ex) {
@@ -75,6 +72,13 @@ public class ReservasController implements Initializable {
         });
     } 
     
+    private void cargarComboDestinos(){
+        ArrayList<Destino> destinos = Destino.cargarDestinos();
+        for(Destino destino:destinos){
+            cbxDestino.getItems().add(destino);
+        }
+    }
+    
     public void aplicarEstilos(){
         cbxOrigen.setStyle("-fx-font-size: 18px;");
         cbxDestino.setStyle("-fx-font-size: 18px;");
@@ -83,17 +87,6 @@ public class ReservasController implements Initializable {
         cantidadPasajeros.setStyle("-fx-font-size: 18px;");
     }
     
-    public void cargarCombo(){
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/destinos.txt"))){
-            String linea;
-            while((linea=br.readLine())!=null){
-                String[] info = linea.split(",");
-                Destino d = new Destino(info[0],info[1]);
-                cbxDestino.getItems().add(d);
-            }
-        }catch(IOException e){
-        }
-    }
     
     public void cambiarAReservaVuelo() throws IOException{
         Stage ventanaActual = (Stage) cbxOrigen.getScene().getWindow();
