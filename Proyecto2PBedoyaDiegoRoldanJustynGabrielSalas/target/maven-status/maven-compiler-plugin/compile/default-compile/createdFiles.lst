@@ -4,6 +4,7 @@ modelo\Pagable.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\ReservasCreadasController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\BienvenidoController.class
 modelo\Destino.class
+com\pooespol\proyecto2pbedoyadiegoroldanjustyn\DatosPersonalesController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\ReservasController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\PopDetalleVueloController.class
 com\pooespol\proyecto2pbedoyadiegoroldanjustyn\ReservaVueloController.class

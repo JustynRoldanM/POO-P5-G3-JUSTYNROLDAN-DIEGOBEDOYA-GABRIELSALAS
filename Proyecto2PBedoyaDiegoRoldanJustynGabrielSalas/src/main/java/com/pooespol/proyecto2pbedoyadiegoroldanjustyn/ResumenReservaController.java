@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import modelo.Tarifa;
 import modelo.Vuelo;
  
@@ -89,45 +90,59 @@ public class ResumenReservaController implements Initializable {
         labelTotalReserva.setText(String.valueOf(totalReserva));
         origenDestino.setText(vueloIda.getOrigen()+" - "+vueloVenida.getOrigen());
         destinoOrigen.setText(vueloVenida.getOrigen()+" - "+vueloVenida.getDestino());
+        btnContinuar.setOnAction(e->{
+            Stage s = (Stage) btnContinuar.getScene().getWindow();
+            s.close();
+            try {
+                App.abrirNuevaVentana("datosPersonales", 750, 730);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }    
     
-    public void cargarContenedorVuelo(Vuelo v,VBox contenedor,Button btn){
-        VBox vb = new VBox();
-        vb.setStyle("-fx-background-color: #00CED1; -fx-border-color: black; -fx-border-width: 1px;");
+   public void cargarContenedorVuelo(Vuelo v, VBox contenedor, Button btn) {
+        VBox vb = new VBox(10);  
+        vb.setStyle("-fx-border-color: black; -fx-border-width: 1px; -fx-padding: 10px;");
+
         HBox duracion = new HBox();
         duracion.setAlignment(Pos.CENTER);
-        Label lblDuracion = new Label("Duracion: " + v.getDuracionHoras() + " horas");
+        Label lblDuracion = new Label("Duración: " + v.getDuracionHoras() + " horas");
         lblDuracion.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
         duracion.getChildren().add(lblDuracion);
-        HBox hora = new HBox();
+        HBox hora = new HBox(10);  
         hora.setAlignment(Pos.CENTER);
         Label lblHoraSalida = new Label(v.getHoraSalida());
         Label lblHoraLlegada = new Label(v.getHoraLlegada());
         lblHoraSalida.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
         lblHoraLlegada.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
-        ImageView img=null;
-         try (FileInputStream f = new FileInputStream("src/main/resources/images/aereo.png")) {
+
+        ImageView img = null;
+        try (FileInputStream f = new FileInputStream("src/main/resources/images/aereo.png")) {
             Image i = new Image(f, 100, 100, false, false);
             img = new ImageView(i);
             img.setPreserveRatio(true);
         } catch (IOException e) {
+            e.printStackTrace();  
         }
         hora.getChildren().addAll(lblHoraSalida, img, lblHoraLlegada);
         HBox precio = new HBox();
         precio.setAlignment(Pos.CENTER);
-        
         Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
         lblPrecio.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
         Bloom b = new Bloom();
         lblPrecio.setEffect(b);
         precio.getChildren().add(lblPrecio);
+
         HBox HBtn = new HBox();
         HBtn.setAlignment(Pos.CENTER);
-        HBtn.setPadding(new Insets(10,10,10,10));
+        HBtn.setPadding(new Insets(10));
         HBtn.getChildren().add(btn);
-        vb.getChildren().addAll(duracion, hora, precio,HBtn);
+
+        vb.getChildren().addAll(duracion, hora, precio, HBtn);
         contenedor.getChildren().add(vb);
     }
+
 
     public static Vuelo getVueloIda() {
         return vueloIda;

@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ResumenReservaController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="780.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ResumenReservaController">
    <content>
-      <VBox prefHeight="700.0" prefWidth="900.0" style="-fx-background-color: linear-gradient(to right, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);;">
+      <VBox prefHeight="750.0" prefWidth="780.0" style="-fx-background-color: linear-gradient(to right, #B0E0E6 0%, #87CEEB 35%, #6A5ACD 100%); -fx-padding: 10px; -fx-border-color: black; -fx-border-width: 1px;;">
          <children>
             <VBox prefHeight="258.0" prefWidth="800.0">
                <children>
@@ -34,12 +34,15 @@
                      <children>
                         <Label contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:" textFill="WHITE">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
-                        <Label fx:id="labelFechaS" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:" textFill="#b0eae6">
+                        <Label fx:id="labelFechaS" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
                         </Label>
                      </children>
@@ -51,8 +54,11 @@
                      <children>
                         <Label fx:id="origenDestino" contentDisplay="CENTER" prefHeight="27.0" prefWidth="379.0" text="Vuelo de Salida:" textFill="WHITE">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                      </children>
                      <padding>
@@ -72,12 +78,15 @@
                      <children>
                         <Label contentDisplay="CENTER" prefHeight="27.0" prefWidth="182.0" text="Vuelo de Venida:" textFill="WHITE">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
-                        <Label fx:id="labelFechaR" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:" textFill="#b0eae6">
+                        <Label fx:id="labelFechaR" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
                         </Label>
                      </children>
@@ -89,8 +98,11 @@
                      <children>
                         <Label fx:id="destinoOrigen" contentDisplay="CENTER" prefHeight="27.0" prefWidth="344.0" text="Vuelo de Regreso:" textFill="WHITE">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                      </children>
                      <padding>
@@ -110,12 +122,15 @@
                      <children>
                         <Label prefHeight="27.0" prefWidth="207.0" text="Total de tu reserva:" textFill="WHITE">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                         <Label fx:id="labelTotalReserva" prefHeight="26.0" prefWidth="113.0" text="Total de tu reserva:">
                            <font>
-                              <Font name="Berlin Sans FB Demi Bold" size="24.0" />
+                              <Font name="Bauhaus 93" size="24.0" />
                            </font>
                         </Label>
                      </children>
@@ -128,7 +143,7 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </padding>
                      <children>
-                        <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="62.0" prefWidth="138.0" style="-fx-background-color: efb810;" text="Continuar">
+                        <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="62.0" prefWidth="138.0" style="-fx-background-color: efb810; -fx-border-color: black;" text="Continuar">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="17.0" />
                            </font>

@@ -147,7 +147,7 @@ public class TarifaVueloRegresoController implements Initializable {
                 Stage s = (Stage)contenedorVB.getScene().getWindow();
                 s.close(); 
                 try {
-                    App.abrirNuevaVentana("resumenReserva",900 ,700);
+                    App.abrirNuevaVentana("resumenReserva",780 ,750);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
