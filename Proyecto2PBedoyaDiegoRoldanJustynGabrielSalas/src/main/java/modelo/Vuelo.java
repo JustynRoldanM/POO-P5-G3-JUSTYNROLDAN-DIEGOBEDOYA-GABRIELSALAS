@@ -2,6 +2,10 @@
 package modelo;
 
 import com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +31,8 @@ public class Vuelo implements Comparable<Vuelo>{
         this.codigoAvion = codigoAvion;
         this.precioVuelo = precioVuelo;
     }
+    
+    
 
     public String getOrigen() {
         return origen;

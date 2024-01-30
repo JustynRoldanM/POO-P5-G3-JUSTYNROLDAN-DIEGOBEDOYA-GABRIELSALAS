@@ -60,8 +60,8 @@ public class ReservasController implements Initializable {
                 ReservaVueloController.setOrigen(String.valueOf(cbxOrigen.getValue()));
                 ResumenReservaController.setFechaS(String.valueOf(fechaSalida.getValue()));
                 ResumenReservaController.setFechaR(String.valueOf(fechaRegreso.getValue()));
-                VuelosRegresoController.setDestino(String.valueOf(cbxOrigen.getValue()));
-                VuelosRegresoController.setOrigen(String.valueOf(cbxDestino.getValue()));
+                VuelosRegresoController.setDestinoVRegreso(String.valueOf(cbxOrigen.getValue()));
+                VuelosRegresoController.setOrigenVRegreso(String.valueOf(cbxDestino.getValue()));
                 try {
                     cambiarAReservaVuelo();
                 } catch (IOException ex) {

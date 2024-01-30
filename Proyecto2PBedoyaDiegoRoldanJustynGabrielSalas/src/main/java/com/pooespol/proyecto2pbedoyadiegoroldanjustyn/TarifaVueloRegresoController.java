@@ -86,7 +86,7 @@ public class TarifaVueloRegresoController implements Initializable {
         cargarTarifas();
         contenedorVB.setPadding(new Insets(30,30,30,30));
         int j=0;
-        for (Tarifa t : tarifas) {
+        for (Tarifa tarifaVRegreso : tarifas) {
             VBox vb = new VBox();
             vb.setStyle("-fx-border-color: "+colores.get(j+3)+";"+
                       "-fx-border-width: 6px;");
@@ -109,12 +109,12 @@ public class TarifaVueloRegresoController implements Initializable {
             hbPrecio.setAlignment(Pos.CENTER);
             hbNombre.setPadding(new Insets(20,20,20,20));
             
-            Label lb1 = new Label(t.getTipo() + ": " + t.getNombreTarifa());
+            Label lb1 = new Label(tarifaVRegreso.getTipo() + ": " + tarifaVRegreso.getNombreTarifa());
             lb1.setStyle("-fx-text-fill: "+colores.get(j+3)+"; -fx-font-family: 'Georgia'; -fx-font-size: 18px; -fx-font-weight: bold;");
             hbNombre.getChildren().add(lb1);
             vb.getChildren().addAll(hbNombre);
 
-            for (int i = 0; i < t.getCaracteristicas().size(); i++) {
+            for (int i = 0; i < tarifaVRegreso.getCaracteristicas().size(); i++) {
                 HBox hb = new HBox();
                 hb.setSpacing(30);       
                 hb.setAlignment(Pos.CENTER_LEFT);
@@ -125,7 +125,7 @@ public class TarifaVueloRegresoController implements Initializable {
                     hb.getChildren().add(img);
                 }catch(IOException e){
                 }
-                Label l = new Label(t.getCaracteristicas().get(i));
+                Label l = new Label(tarifaVRegreso.getCaracteristicas().get(i));
                 l.setStyle("-fx-font-size: 15px;");
                 hb.getChildren().add(l);
                 vbCaracteristicas.setPadding(new Insets(20,20,20,20));
@@ -133,32 +133,28 @@ public class TarifaVueloRegresoController implements Initializable {
             }
             vb.getChildren().add(vbCaracteristicas);
 
-            Label lbl3 = new Label(String.valueOf(vueloRegreso.getPrecioVuelo() + vueloRegreso.getPrecioVuelo() * t.getIncremento()));
+            Label lbl3 = new Label(String.valueOf(vueloRegreso.getPrecioVuelo() + vueloRegreso.getPrecioVuelo() * tarifaVRegreso.getIncremento()));
             lbl3.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
             hbPrecio.setStyle("-fx-background-color: "+colores.get(j+3)+";");
             hbPrecio.getChildren().add(lbl3);
             hbPrecio.setPadding(new Insets(15,15,15,15));
             vb.getChildren().add(hbPrecio);
             vb.setOnMouseClicked(e->{
-                Stage s =(Stage) contenedorVB.getScene().getWindow();
-                s.close();
+                ResumenReservaController.setTarifaVenida(tarifaVRegreso);
+                vueloRegreso.setPrecioVuelo(vueloRegreso.getPrecioVuelo()*(1+tarifaVRegreso.getIncremento()));
+                ResumenReservaController.setVueloVenida(vueloRegreso);
+                PopDetalleVueloController.setV(vueloRegreso);
+                Stage s = (Stage)contenedorVB.getScene().getWindow();
+                s.close(); 
                 try {
-                    App.abrirNuevaVentana("resumenReserva",800 ,800);
+                    App.abrirNuevaVentana("resumenReserva",900 ,700);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             });
             contenedorVB.setSpacing(15);
             contenedorVB.getChildren().add(vb);
-            contenedorVB.setOnMouseClicked(e->{
-                vueloRegreso.setPrecioVuelo(vueloRegreso.getPrecioVuelo()*(1+t.getIncremento()));
-                ResumenReservaController.setVueloVenida(vueloRegreso);
-                try {
-                    App.abrirNuevaVentana("resumenReserva",800 ,800);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            });
+            
             j+=1;
         }
     }

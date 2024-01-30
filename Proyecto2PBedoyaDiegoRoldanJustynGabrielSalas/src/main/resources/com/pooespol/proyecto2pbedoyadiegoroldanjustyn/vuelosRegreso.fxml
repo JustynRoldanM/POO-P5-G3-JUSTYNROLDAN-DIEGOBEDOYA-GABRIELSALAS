@@ -6,57 +6,52 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.VuelosRegresoController">
-   <children>
-      <ScrollPane prefHeight="700.0" prefWidth="650.0">
-         <content>
-            <VBox prefHeight="700.0" prefWidth="650.0">
+<ScrollPane prefHeight="700.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.VuelosRegresoController">
+   <content>
+      <VBox prefHeight="700.0" prefWidth="650.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="161.0" prefWidth="650.0" style="-fx-background-color: #FFC15A;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="161.0" prefWidth="650.0" style="-fx-background-color: #FFC15A;">
-                     <children>
-                        <Label fx:id="titulo" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="601.0" text="Label">
-                           <font>
-                              <Font name="Bernard MT Condensed" size="34.0" />
-                           </font>
-                           <effect>
-                              <Bloom />
-                           </effect>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                     </padding>
-                  </HBox>
-                  <HBox prefHeight="78.0" prefWidth="650.0" spacing="10.0">
-                     <children>
-                        <Label fx:id="ordenar" prefHeight="32.0" prefWidth="178.0" text="Label">
-                           <font>
-                              <Font name="Bernard MT Condensed" size="25.0" />
-                           </font>
-                        </Label>
-                        <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText=" " style="-fx-border-color: black; -fx-background-color: #74CDFC;">
-                           <effect>
-                              <Blend>
-                                 <topInput>
-                                    <Blend />
-                                 </topInput>
-                              </Blend>
-                           </effect>
-                        </ComboBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
-                     </padding>
-                  </HBox>
-                  <VBox fx:id="contenedorVB" prefHeight="468.0" prefWidth="650.0" />
+                  <Label fx:id="titulo" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="55.0" prefWidth="601.0" text="Label">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="34.0" />
+                     </font>
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Label>
                </children>
-            </VBox>
-         </content>
-      </ScrollPane>
-   </children>
-</AnchorPane>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="78.0" prefWidth="650.0" spacing="10.0">
+               <children>
+                  <Label fx:id="ordenar" prefHeight="32.0" prefWidth="178.0" text="Label">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="25.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbFiltro" prefWidth="150.0" promptText=" " style="-fx-border-color: black; -fx-background-color: #74CDFC;">
+                     <effect>
+                        <Blend>
+                           <topInput>
+                              <Blend />
+                           </topInput>
+                        </Blend>
+                     </effect>
+                  </ComboBox>
+               </children>
+               <padding>
+                  <Insets bottom="18.0" left="18.0" right="18.0" top="18.0" />
+               </padding>
+            </HBox>
+            <VBox fx:id="contenedorVB" prefHeight="468.0" prefWidth="650.0" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

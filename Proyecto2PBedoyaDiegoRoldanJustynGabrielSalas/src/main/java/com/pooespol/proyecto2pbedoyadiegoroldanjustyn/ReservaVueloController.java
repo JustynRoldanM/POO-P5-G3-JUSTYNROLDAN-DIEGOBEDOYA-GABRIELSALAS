@@ -29,6 +29,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Cliente;
+import modelo.Tarifa;
 import modelo.Vuelo;
 
 /**
@@ -37,8 +38,7 @@ import modelo.Vuelo;
  * @author Justyn Roldan
  */
 public class ReservaVueloController implements Initializable {
-    
-    private static ArrayList<Vuelo> vuelos = new ArrayList<>();
+
     private static String origen;
     private static String destino;
     
@@ -59,7 +59,7 @@ public class ReservaVueloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
         contenedorVB.setPadding(new Insets(20,20,20,20));
-        llenarListaVuelos();
+        ArrayList<Vuelo> vuelos =cargarVuelos();
         try {
             contenidoDinamicoVuelos(vuelos);
         } catch (FileNotFoundException ex) {
@@ -72,23 +72,10 @@ public class ReservaVueloController implements Initializable {
         );
         filtroComboBox();
     }    
-    
-    public void llenarListaVuelos(){
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelos.txt"))){
-            String linea;
-            br.readLine();
-            while((linea=br.readLine())!=null){
-                String[] info = linea.split(";");
-                vuelos.add(new Vuelo(info[1],info[2],Double.valueOf(info[3]),info[4],info[5],info[0],info[6],Double.valueOf(info[7])));
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-    
+
     public static ArrayList<Vuelo> cargarVuelos(){
         ArrayList<Vuelo> vuelos = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelos.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelosIda.txt"))){
             String linea;
             br.readLine();
             while((linea=br.readLine())!=null){
@@ -110,6 +97,7 @@ public class ReservaVueloController implements Initializable {
         }
         return null;
     }
+    
     public static ArrayList<String> colores() {
         ArrayList<String> colores = new ArrayList<>();
 
@@ -200,6 +188,7 @@ public class ReservaVueloController implements Initializable {
     }
     
     public void filtroComboBox(){
+        ArrayList<Vuelo> vuelos =cargarVuelos();
         cbFiltro.getItems().addAll("precio","duración");
         cbFiltro.setOnAction(e ->{
             ReservaVueloController.setValorCB((String) cbFiltro.getValue());
@@ -248,6 +237,6 @@ public class ReservaVueloController implements Initializable {
     public static void setValorCB(String valorCB) {
         ReservaVueloController.valorCB = valorCB;
     }
-    
+
     
 }

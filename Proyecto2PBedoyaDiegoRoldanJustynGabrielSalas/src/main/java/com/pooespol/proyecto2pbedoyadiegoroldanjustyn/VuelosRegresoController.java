@@ -30,10 +30,9 @@ import modelo.Vuelo;
  * @author Justin Roldan
  */
 public class VuelosRegresoController implements Initializable {
-    private static ArrayList<Vuelo> vuelos = new ArrayList<>();
     
-    private static String origen;
-    private static String destino;
+    private static String origenVRegreso;
+    private static String destinoVRegreso;
 
     @FXML
     private Label titulo;
@@ -52,7 +51,7 @@ public class VuelosRegresoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {  
         contenedorVB.setPadding(new Insets(20,20,20,20));
-        llenarListaVuelos();
+        ArrayList<Vuelo> vuelos = cargarVuelos();
         try {
             contenidoDinamicoVuelos(vuelos);
         } catch (FileNotFoundException ex) {
@@ -66,22 +65,9 @@ public class VuelosRegresoController implements Initializable {
         filtroComboBox();
     }    
     
-    public void llenarListaVuelos(){
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelos.txt"))){
-            String linea;
-            br.readLine();
-            while((linea=br.readLine())!=null){
-                String[] info = linea.split(";");
-                vuelos.add(new Vuelo(info[2],info[1],Double.valueOf(info[3]),info[4],info[5],info[0],info[6],Double.valueOf(info[7])));
-            }
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-    }
-    
-    public static ArrayList<Vuelo> cargarVuelos(){
+     private static ArrayList<Vuelo> cargarVuelos(){
         ArrayList<Vuelo> vuelos = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelos.txt"))){
+        try(BufferedReader br = new BufferedReader(new FileReader("src/main/resources/files/vuelosVenida.txt"))){
             String linea;
             br.readLine();
             while((linea=br.readLine())!=null){
@@ -103,6 +89,7 @@ public class VuelosRegresoController implements Initializable {
         }
         return null;
     }
+    
     public static ArrayList<String> colores() {
         ArrayList<String> colores = new ArrayList<>();
         colores.add("#00CED1");  // Turquesa medio
@@ -132,11 +119,11 @@ public class VuelosRegresoController implements Initializable {
     
     public void contenidoDinamicoVuelos(ArrayList<Vuelo> vuelos) throws FileNotFoundException{
         ArrayList<String> colores= colores();
-        titulo.setText("Selecciona tu vuelo "+origen+" - "+destino);
+        titulo.setText("Selecciona tu vuelo "+origenVRegreso+" - "+destinoVRegreso);
         ordenar.setText("Ordenar por: ");
         int j=0;
-        for(Vuelo v:vuelos){
-            if(v.getOrigen().equals(origen) && v.getDestino().equals(destino)){
+        for(Vuelo vueloRegreso:vuelos){
+            if(vueloRegreso.getOrigen().equals(origenVRegreso) && vueloRegreso.getDestino().equals(destinoVRegreso)){
                 VBox vb = new VBox();
                 vb.setStyle("-fx-background-color: "+colores.get(j) +
                             "; -fx-border-color: "+colores.get(j)+
@@ -152,10 +139,10 @@ public class VuelosRegresoController implements Initializable {
                 duracion.setAlignment(Pos.CENTER);
                 hora.setAlignment(Pos.CENTER);
                 precio.setAlignment(Pos.CENTER);
-                Label lblDuracion = new Label("Duracion: "+v.getDuracionHoras()+" horas");
-                Label lblHoraSalida = new Label(v.getHoraSalida());
-                Label lblHoraLlegada = new Label(v.getHoraLlegada());
-                Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
+                Label lblDuracion = new Label("Duracion: "+vueloRegreso.getDuracionHoras()+" horas");
+                Label lblHoraSalida = new Label(vueloRegreso.getHoraSalida());
+                Label lblHoraLlegada = new Label(vueloRegreso.getHoraLlegada());
+                Label lblPrecio = new Label(String.valueOf(vueloRegreso.getPrecioVuelo()));
                 lblHoraSalida.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
                 lblDuracion.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 20px; -fx-font-weight: bold;");
                 lblHoraLlegada.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
@@ -172,7 +159,7 @@ public class VuelosRegresoController implements Initializable {
                 hora.getChildren().addAll(lblHoraSalida,img,lblHoraLlegada);
                 precio.getChildren().add(lblPrecio);
                 vb.setOnMouseClicked(e ->{          
-                    TarifaVueloRegresoController.setVueloRegreso(v);
+                    TarifaVueloRegresoController.setVueloRegreso(vueloRegreso);
                     try {
                         cargarVentanaTarifas();
                     } catch (IOException ex) {
@@ -195,6 +182,7 @@ public class VuelosRegresoController implements Initializable {
     }
     
     public void filtroComboBox(){
+        ArrayList<Vuelo> vuelos = cargarVuelos();
         cbFiltro.getItems().addAll("precio","duración");
         cbFiltro.setOnAction(e ->{
             ReservaVueloController.setValorCB((String) cbFiltro.getValue());
@@ -217,23 +205,24 @@ public class VuelosRegresoController implements Initializable {
             }
         });
     }
+
+    public static String getOrigenVRegreso() {
+        return origenVRegreso;
+    }
+
+    public static void setOrigenVRegreso(String origenVRegreso) {
+        VuelosRegresoController.origenVRegreso = origenVRegreso;
+    }
+
+    public static String getDestinoVRegreso() {
+        return destinoVRegreso;
+    }
+
+    public static void setDestinoVRegreso(String destinoVRegreso) {
+        VuelosRegresoController.destinoVRegreso = destinoVRegreso;
+    }
     
 
-    public static String getOrigen() {
-        return origen;
-    }
-
-    public static void setOrigen(String origen) {
-        VuelosRegresoController.origen = origen;
-    }
-
-    public static String getDestino() {
-        return destino;
-    }
-
-    public static void setDestino(String destino) {
-        VuelosRegresoController.destino= destino;
-    }
 
     public static String getValorCB() {
         return valorCB;

@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import modelo.Tarifa;
 import modelo.Vuelo;
  
 public class ResumenReservaController implements Initializable {
@@ -53,12 +54,35 @@ public class ResumenReservaController implements Initializable {
     private static String fechaR;
     private static String fechaS;
     private static double totalReserva;
-
+    private static Tarifa tarifaIda;
+    private static Tarifa tarifaVenida;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        cargarContenedorVuelo(vueloIda,contenedorVuelo1);
-        cargarContenedorVuelo(vueloVenida,contenedorVuelo2);
+        Button btnVueloSalida = new Button("Detalles de la Reserva");
+        btnVueloSalida.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;");
+        btnVueloSalida.setOnAction(event -> {
+            PopDetalleVueloController.setT(tarifaIda);
+            PopDetalleVueloController.setV(vueloIda);
+            try {
+                App.abrirNuevaVentana("popDetalleVuelo", 374, 276);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        Button btnVueloRegreso = new Button("Detalles de la Reserva");
+        btnVueloRegreso.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;");
+        btnVueloRegreso.setOnAction(event -> {
+            PopDetalleVueloController.setT(tarifaVenida);
+            PopDetalleVueloController.setV(vueloVenida);
+            try {
+                App.abrirNuevaVentana("popDetalleVuelo", 374, 276);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        cargarContenedorVuelo(vueloIda,contenedorVuelo1,btnVueloSalida);
+        cargarContenedorVuelo(vueloVenida,contenedorVuelo2,btnVueloRegreso);
         labelFechaR.setText(fechaR);
         labelFechaS.setText(fechaS);
         totalReserva=vueloIda.getPrecioVuelo()+vueloVenida.getPrecioVuelo();
@@ -67,13 +91,13 @@ public class ResumenReservaController implements Initializable {
         destinoOrigen.setText(vueloVenida.getOrigen()+" - "+vueloVenida.getDestino());
     }    
     
-    public void cargarContenedorVuelo(Vuelo v,VBox contenedor){
+    public void cargarContenedorVuelo(Vuelo v,VBox contenedor,Button btn){
         VBox vb = new VBox();
-        vb.setStyle("-fx-background-color: white" +"; -fx-border-color: gold");
+        vb.setStyle("-fx-background-color: #00CED1; -fx-border-color: black; -fx-border-width: 1px;");
         HBox duracion = new HBox();
         duracion.setAlignment(Pos.CENTER);
         Label lblDuracion = new Label("Duracion: " + v.getDuracionHoras() + " horas");
-        lblDuracion.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 20px; -fx-font-weight: bold;");
+        lblDuracion.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
         duracion.getChildren().add(lblDuracion);
         HBox hora = new HBox();
         hora.setAlignment(Pos.CENTER);
@@ -91,38 +115,24 @@ public class ResumenReservaController implements Initializable {
         hora.getChildren().addAll(lblHoraSalida, img, lblHoraLlegada);
         HBox precio = new HBox();
         precio.setAlignment(Pos.CENTER);
+        
         Label lblPrecio = new Label(String.valueOf(v.getPrecioVuelo()));
-        lblPrecio.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 20px; -fx-font-weight: bold;");
+        lblPrecio.setStyle("-fx-text-fill: black; -fx-font-family: 'Helvetica'; -fx-font-size: 18px; -fx-font-weight: bold;");
         Bloom b = new Bloom();
         lblPrecio.setEffect(b);
         precio.getChildren().add(lblPrecio);
-        vb.setPadding(new Insets(12, 12, 12, 12));
-        vb.setSpacing(30);
-        vb.getChildren().addAll(duracion, hora, precio);
-        Button btnDetalles = new Button("Detalles de la Reserva");
-        btnDetalles.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;");
-        btnDetalles.setOnAction(event -> {
-            try {
-                mostrarDetallesReserva(v);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        });
-        VBox cButton = new VBox();
-        cButton.setAlignment(Pos.CENTER);
-        cButton.setPadding(new Insets(10, 10, 10, 10));
-        cButton.getChildren().add(btnDetalles);
-        vb.getChildren().add(cButton);
+        HBox HBtn = new HBox();
+        HBtn.setAlignment(Pos.CENTER);
+        HBtn.setPadding(new Insets(10,10,10,10));
+        HBtn.getChildren().add(btn);
+        vb.getChildren().addAll(duracion, hora, precio,HBtn);
         contenedor.getChildren().add(vb);
     }
 
     public static Vuelo getVueloIda() {
         return vueloIda;
     }
-    
-    public void mostrarDetallesReserva(Vuelo v) throws IOException{
-        App.abrirNuevaVentana("popDetalleReserva", 200, 200);
-    }
+   
 
     public static void setVueloIda(Vuelo vueloIda) {
         ResumenReservaController.vueloIda = vueloIda;
@@ -160,6 +170,21 @@ public class ResumenReservaController implements Initializable {
         ResumenReservaController.totalReserva = totalReserva;
     }
 
+    public static Tarifa getTarifaIda() {
+        return tarifaIda;
+    }
 
-   
+    public static void setTarifaIda(Tarifa tarifaIda) {
+        ResumenReservaController.tarifaIda = tarifaIda;
+    }
+
+    public static Tarifa getTarifaVenida() {
+        return tarifaVenida;
+    }
+
+    public static void setTarifaVenida(Tarifa tarifaVenida) {
+        ResumenReservaController.tarifaVenida = tarifaVenida;
+    }
+
+
 }

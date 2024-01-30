@@ -135,20 +135,21 @@ public class TarifasController implements Initializable {
             hbPrecio.getChildren().add(lbl3);
             hbPrecio.setPadding(new Insets(15,15,15,15));
             vb.getChildren().add(hbPrecio);
-            
-            contenedorVB.setSpacing(15);
-            contenedorVB.getChildren().add(vb);
-            contenedorVB.setOnMouseClicked(e->{
-                Stage s = (Stage)contenedorVB.getScene().getWindow();
-                s.close();
+            vb.setOnMouseClicked(e->{
+                ResumenReservaController.setTarifaIda(t);
                 vueloIda.setPrecioVuelo(vueloIda.getPrecioVuelo()*(1+t.getIncremento()));
                 ResumenReservaController.setVueloIda(vueloIda);
+                PopDetalleVueloController.setV(vueloIda);
+                Stage s = (Stage)contenedorVB.getScene().getWindow();
+                s.close();   
                 try {
-                    App.abrirNuevaVentana("vuelosRegreso",640 ,700);
+                    App.abrirNuevaVentana("vuelosRegreso",650 ,700);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             });
+            contenedorVB.setSpacing(15);
+            contenedorVB.getChildren().add(vb);
             j+=1;
         }
     }
