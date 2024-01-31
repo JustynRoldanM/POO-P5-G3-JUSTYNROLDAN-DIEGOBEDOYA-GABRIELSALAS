@@ -90,6 +90,16 @@ public class PromocionesController implements Initializable {
             return promociones;
         }
         
+        public static Promocion buscarPromocion(String codigo){
+            ArrayList<Promocion> promociones=cargarPromociones();
+            for(Promocion p:promociones){
+                if(p.getCodigoPromocion().equals(codigo)){
+                    return p;
+                }
+            }
+            return null;
+        }
+        
         public void ejecutarThread(ArrayList<Promocion> promos){     
             Thread tr = new Thread(() ->{
                 for(int i=0;i<promos.size();i++){
