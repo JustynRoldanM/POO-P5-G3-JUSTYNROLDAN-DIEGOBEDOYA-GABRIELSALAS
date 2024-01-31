@@ -1,9 +1,13 @@
-
 package modelo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  *
- * @author Justyn Roldan
+ * @author  Diego Bedoya
  */
 public class Promocion {
     private double coordX;
@@ -18,6 +22,30 @@ public class Promocion {
         this.codigoPromocion = codigoPromocion;
         this.pais = pais;
         this.descuento = descuento;
+    }
+    
+    public static ArrayList<Promocion> cargarPromos(){
+            ArrayList<Promocion> promociones = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/Files/promociones.txt"))){
+                String linea;
+                while ((linea = br.readLine())!= null){
+                    String[] info = linea.split(",");
+                    Promocion promo = new Promocion(Double.valueOf(info[0]),Double.valueOf(info[1]),String.valueOf(info[2]),String.valueOf(info[3]),Integer.valueOf(info[4]));
+                    promociones.add(promo);
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+            return promociones;
+     }
+     
+     public static Promocion buscarPromocion(String codigo, ArrayList<Promocion> promociones) throws CodigoInvalidoException {
+        for (Promocion promo : promociones) {
+            if (promo.getCodigoPromocion().equals(codigo)) {
+                return promo;
+            }
+        }
+        return null;
     }
 
     public double getCoordX() {
