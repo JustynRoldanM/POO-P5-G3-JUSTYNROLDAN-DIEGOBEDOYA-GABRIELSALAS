@@ -1,4 +1,3 @@
-
 package modelo;
 
 /**
@@ -58,6 +57,6 @@ public class Pago {
 
     public void setDescuento(double descuento) {
         this.descuento = descuento;
-    }
-    
+    }
+    
 }
