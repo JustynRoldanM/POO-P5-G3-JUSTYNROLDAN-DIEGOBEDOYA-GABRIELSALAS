@@ -136,8 +136,10 @@ public class TarifasController implements Initializable {
             hbPrecio.setPadding(new Insets(15,15,15,15));
             vb.getChildren().add(hbPrecio);
             vb.setOnMouseClicked(e->{
+                PagoController.setTarifaSalida(t);
                 ResumenReservaController.setTarifaIda(t);
                 vueloIda.setPrecioVuelo(vueloIda.getPrecioVuelo()*(1+t.getIncremento()));
+                PagoController.setVueloSalida(vueloIda);
                 ResumenReservaController.setVueloIda(vueloIda);
                 PopDetalleVueloController.setV(vueloIda);
                 Stage s = (Stage)contenedorVB.getScene().getWindow();
