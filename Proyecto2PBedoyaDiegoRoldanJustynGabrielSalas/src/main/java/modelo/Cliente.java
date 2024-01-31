@@ -1,16 +1,16 @@
-
 package modelo;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
- * @author Justyn Roldan
+ * @author home
  */
-public class Cliente {
+public class Cliente implements Serializable{
     private long cedula;
     private String nombre;
     private String apellido;
@@ -93,6 +93,6 @@ public class Cliente {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-    
+    }
+    
 }
