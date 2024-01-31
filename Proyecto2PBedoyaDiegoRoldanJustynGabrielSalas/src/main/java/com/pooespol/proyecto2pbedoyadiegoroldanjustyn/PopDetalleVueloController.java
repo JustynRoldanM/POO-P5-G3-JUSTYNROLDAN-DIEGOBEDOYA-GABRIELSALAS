@@ -21,7 +21,7 @@ import modelo.Vuelo;
 /**
  * FXML Controller class
  *
- * @author Justin Roldan
+ * @author home
  */
 public class PopDetalleVueloController implements Initializable {
 
@@ -78,7 +78,5 @@ public class PopDetalleVueloController implements Initializable {
     public static void setT(Tarifa f) {
         PopDetalleVueloController.t = f;
     }
-    
-    
-    
+    
 }
