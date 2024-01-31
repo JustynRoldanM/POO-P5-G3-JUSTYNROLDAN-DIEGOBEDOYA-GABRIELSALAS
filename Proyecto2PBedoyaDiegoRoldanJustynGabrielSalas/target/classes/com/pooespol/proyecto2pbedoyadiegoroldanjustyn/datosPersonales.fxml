@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.DatosPersonalesController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.DatosPersonalesController">
    <content>
       <VBox prefHeight="730.0" prefWidth="750.0" style="-fx-background-color: linear-gradient(to bottom, #FF6347, #FFA500, #FFD700); -fx-border-color: black; -fx-border-width: 1px;;">
          <children>
@@ -35,7 +35,7 @@
             </VBox>
             <HBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="749.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black;" text="Continuar" textFill="WHITE">
+                  <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black;" text="Continuar" textFill="WHITE">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="15.0" />
                      </font>

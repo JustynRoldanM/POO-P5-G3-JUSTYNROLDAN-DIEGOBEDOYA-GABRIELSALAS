@@ -78,5 +78,4 @@ public class PopDetalleVueloController implements Initializable {
     public static void setT(Tarifa f) {
         PopDetalleVueloController.t = f;
     }
-    
 }

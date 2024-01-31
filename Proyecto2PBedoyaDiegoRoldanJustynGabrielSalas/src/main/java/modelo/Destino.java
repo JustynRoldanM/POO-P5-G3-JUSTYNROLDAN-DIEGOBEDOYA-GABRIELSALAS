@@ -52,6 +52,5 @@ public class Destino {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-    
+    }
 }

@@ -17,7 +17,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="159.0" prefWidth="800.0">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="489.0" text="Resumen de la reserva" textFill="#a43d3d">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="78.0" prefWidth="489.0" text="Resumen de la reserva" textFill="WHITE">
                            <font>
                               <Font name="Bernard MT Condensed" size="49.0" />
                            </font>
@@ -36,6 +36,9 @@
                            <font>
                               <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                         <Label fx:id="labelFechaS" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:">
                            <font>
@@ -53,6 +56,9 @@
                            <font>
                               <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                      </children>
                      <padding>
@@ -74,6 +80,9 @@
                            <font>
                               <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                         <Label fx:id="labelFechaR" contentDisplay="CENTER" prefHeight="66.0" prefWidth="147.0" text="Vuelo de ida:">
                            <font>
@@ -91,6 +100,9 @@
                            <font>
                               <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                      </children>
                      <padding>
@@ -112,6 +124,9 @@
                            <font>
                               <Font name="Bauhaus 93" size="24.0" />
                            </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
                         </Label>
                         <Label fx:id="labelTotalReserva" prefHeight="26.0" prefWidth="113.0" text="Total de tu reserva:">
                            <font>
@@ -128,7 +143,7 @@
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </padding>
                      <children>
-                        <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="62.0" prefWidth="138.0" style="-fx-background-color: efb810;" text="Continuar">
+                        <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="62.0" prefWidth="138.0" style="-fx-background-color: efb810; -fx-border-color: black;" text="Continuar">
                            <font>
                               <Font name="Berlin Sans FB Demi Bold" size="17.0" />
                            </font>

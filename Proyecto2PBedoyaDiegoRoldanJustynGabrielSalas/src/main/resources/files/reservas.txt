@@ -1,3 +1,2 @@
 CodReserva,cedulaCliente,ciudadOrigen,ciudadDestino,fechasalida,fechaRegreso,numPasajeros,numVueloIda,numVueloRegreso,tipoTarifaIda,TipoTarifaRegresoXIFKBR,3345678901,Guayaquil,El Cairo,2024-01-11,2024-01-20,1,GYE101,CDG202,S,S,1700.0
-DCJRIA,3345678901,Guayaquil,El Cairo,2024-01-17,2024-01-12,1,GYE101,CDG202,S,S,1700.0
-SAQWIL,3345678901,Guayaquil,El Cairo,2024-01-03,2024-01-19,1,GYE101,CDG202,M,M,27200.0
+IJAPIV,3345678901,Guayaquil,El Cairo,2024-01-11,2024-01-19,1,GYE101,CDG205,M,L,46900.0

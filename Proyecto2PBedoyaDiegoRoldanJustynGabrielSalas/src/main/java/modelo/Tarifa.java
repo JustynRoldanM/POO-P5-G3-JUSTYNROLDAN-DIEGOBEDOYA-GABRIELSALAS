@@ -1,13 +1,14 @@
 
 package modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Justyn Roldan
  */
-public class Tarifa {
+public class Tarifa implements Serializable{
     private String nombreTarifa;
     private ArrayList<String> caracteristicas= new ArrayList<>();
     private double incremento;

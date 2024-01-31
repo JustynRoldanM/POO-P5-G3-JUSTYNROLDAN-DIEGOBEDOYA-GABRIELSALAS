@@ -207,6 +207,5 @@ public class TarifaVueloRegresoController implements Initializable {
             }
         }
         return null;
-    }
-    
+    }
 }

@@ -377,7 +377,5 @@ public class PagoController implements Initializable {
 
     public static void setFechaRegreso(String fechaRegreso) {
         PagoController.fechaRegreso = fechaRegreso;
-    }
-    
-    
+    }   
 }

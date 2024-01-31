@@ -107,5 +107,5 @@ public class Vuelo implements Comparable<Vuelo>,Serializable{
             comparacion = Double.compare(this.duracionHoras,o.getDuracionHoras());
         }
         return comparacion;
-    }
+    }
 }

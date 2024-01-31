@@ -87,6 +87,5 @@ public class Promocion {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-    
+    }
 }

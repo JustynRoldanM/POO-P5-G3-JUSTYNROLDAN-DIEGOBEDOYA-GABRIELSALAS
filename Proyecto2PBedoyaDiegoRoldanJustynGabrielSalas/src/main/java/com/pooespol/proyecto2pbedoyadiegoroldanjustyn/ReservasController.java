@@ -97,5 +97,5 @@ public class ReservasController implements Initializable {
         Stage ventanaActual = (Stage) cbxOrigen.getScene().getWindow();
         ventanaActual.close();
         App.abrirNuevaVentana("reservaVuelo", 650, 700);
-    }
+    }
 }

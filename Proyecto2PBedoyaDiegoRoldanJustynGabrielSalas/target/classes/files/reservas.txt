@@ -1,1 +1,1 @@
-CodReserva,cedulaCliente,ciudadOrigen,ciudadDestino,fechasalida,fechaRegreso,numPasajeros,numVueloIda,numVueloRegreso,tipoTarifaIda,TipoTarifaRegreso
+CodReserva,cedulaCliente,ciudadOrigen,ciudadDestino,fechasalida,fechaRegreso,numPasajeros,numVueloIda,numVueloRegreso,tipoTarifaIda,TipoTarifaRegresoXIFKBR,3345678901,Guayaquil,El Cairo,2024-01-11,2024-01-20,1,GYE101,CDG202,S,S,1700.0
