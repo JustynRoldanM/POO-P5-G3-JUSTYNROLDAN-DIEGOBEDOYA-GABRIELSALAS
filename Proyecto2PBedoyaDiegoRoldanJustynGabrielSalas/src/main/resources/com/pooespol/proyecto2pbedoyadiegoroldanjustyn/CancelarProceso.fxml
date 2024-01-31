@@ -27,12 +27,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="66.0" prefWidth="493.0" spacing="30.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #8f0b6d;" text="Sí" textFill="WHITE">
+            <Button fx:id="btnSi" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #8f0b6d;" text="Sí" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #8f0b6d;" text="No" textFill="WHITE">
+            <Button fx:id="btnNo" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #8f0b6d;" text="No" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
