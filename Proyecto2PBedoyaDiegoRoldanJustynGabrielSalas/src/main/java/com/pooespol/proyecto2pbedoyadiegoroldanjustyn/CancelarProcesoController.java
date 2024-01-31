@@ -10,23 +10,15 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
  * FXML Controller class
  *
- * @author home
+ * @author Justin Roldan
  */
-public class CancelarProcesoController implements Initializable {
+public class CancelarReservaController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML
     private Button btnSi;
     
@@ -34,27 +26,35 @@ public class CancelarProcesoController implements Initializable {
     private Button btnNo;
     
     @FXML
-    private Stage stagePago;
+    private static Stage stagePago;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        btnNo.setOnAction(e ->{
-           Stage s = (Stage) btnNo.getScene().getWindow();
-           s.close();
-        });
-        
-        btnSi.setOnAction(e ->{
+        btnSi.setOnAction(e->{    
             stagePago.close();
-            Stage s = (Stage) btnNo.getScene().getWindow();
-            s.close();
-            try{
-                App.abrirNuevaVentana("bienvenido", 1037, 758);
-            }catch(IOException ex){
+            try {
+                App.abrirNuevaVentana("bienvenido",1037 , 758);
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
+            Stage s =(Stage) btnNo.getScene().getWindow();
+            s.close();
         });
-        
+        btnNo.setOnAction(e->{
+            Stage s =(Stage) btnNo.getScene().getWindow();
+            s.close();
+        });
     }    
+
+    public static Stage getStagePago() {
+        return stagePago;
+    }
+
+    public static void setStagePago(Stage stagePago) {
+        CancelarReservaController.stagePago = stagePago;
+    }
+
+    
+    
     
 }
