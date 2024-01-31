@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author  Diego Bedoya
+ * @author Justyn Roldan
  */
 public class Promocion {
     private double coordX;
@@ -87,6 +87,6 @@ public class Promocion {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-    
+    }
+    
 }
