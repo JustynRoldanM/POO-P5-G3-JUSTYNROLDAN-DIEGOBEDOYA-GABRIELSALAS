@@ -123,13 +123,15 @@ public class InicioController implements Initializable{
     
     public Boolean validarUserContra(String user, String pass){
         Cliente c = encontrarCliente(user,pass);
+        
         if(c!=null){ 
             try {
+                PagoController.setCliente(c);
                 BienvenidoController.setCliente(c);
-                cambiarABienvenido(); 
                 if (!botonPresionado) {
-                     abrirReservasCreadas();       
-                     botonPresionado = true;
+                    cambiarABienvenido();
+                    abrirReservasCreadas();       
+                    botonPresionado = true;
                 }
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -156,5 +158,3 @@ public class InicioController implements Initializable{
     }
 
 }
-
-
