@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-
+/**
+ *
+ * @author Justyn Roldan
+ */
 public class Vuelo implements Comparable<Vuelo>,Serializable{
     private String origen;
     private String destino;
@@ -104,5 +107,5 @@ public class Vuelo implements Comparable<Vuelo>,Serializable{
             comparacion = Double.compare(this.duracionHoras,o.getDuracionHoras());
         }
         return comparacion;
-    }
+    }
 }
