@@ -27,13 +27,14 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="491.0">
+      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="491.0" spacing="5.0">
          <children>
             <Label text="Reserva:" textFill="#8f0b6d">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
+            <Label fx:id="lblReserva" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="491.0">
@@ -56,17 +57,17 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" prefHeight="109.0" prefWidth="491.0">
          <children>
-            <ImageView fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="visorImg" fitHeight="100.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="280.0">
                <children>
-                  <Label />
+                  <Label fx:id="lblConteo" />
                </children>
             </HBox>
          </children>
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #8f0b6d;" text="Aceptar" textFill="WHITE">
+            <Button fx:id="btnAceptar" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #8f0b6d;" text="Aceptar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
