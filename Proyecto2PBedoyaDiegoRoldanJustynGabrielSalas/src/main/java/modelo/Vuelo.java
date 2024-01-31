@@ -1,17 +1,14 @@
-
 package modelo;
 
 import com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- *
- * @author Justyn Roldan
- */
-public class Vuelo implements Comparable<Vuelo>{
+
+public class Vuelo implements Comparable<Vuelo>,Serializable{
     private String origen;
     private String destino;
     private double duracionHoras;
