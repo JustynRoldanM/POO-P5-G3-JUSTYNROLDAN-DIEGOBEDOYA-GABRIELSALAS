@@ -33,6 +33,9 @@ public class CancelarProcesoController implements Initializable {
     @FXML
     private Button btnNo;
     
+    @FXML
+    private Stage stagePago;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -42,6 +45,7 @@ public class CancelarProcesoController implements Initializable {
         });
         
         btnSi.setOnAction(e ->{
+            stagePago.close();
             Stage s = (Stage) btnNo.getScene().getWindow();
             s.close();
             try{
