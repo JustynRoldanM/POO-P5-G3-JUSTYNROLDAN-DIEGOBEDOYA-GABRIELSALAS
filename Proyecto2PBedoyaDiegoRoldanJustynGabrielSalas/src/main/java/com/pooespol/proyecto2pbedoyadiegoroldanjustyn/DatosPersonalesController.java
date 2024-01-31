@@ -4,16 +4,19 @@
  */
 package com.pooespol.proyecto2pbedoyadiegoroldanjustyn;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -32,9 +35,21 @@ public class DatosPersonalesController implements Initializable {
     private VBox contenedorFormularios;
     
     private static int numeroPersonas;
+    
+    @FXML
+    private Button btnContinuar;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         crearFormularios();
+        btnContinuar.setOnAction(e->{
+            Stage stage =(Stage)contenedorFormularios.getScene().getWindow();
+            stage.close();
+            try {
+                App.abrirNuevaVentana("Pago",698 , 700);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
     }
 
 
@@ -47,7 +62,7 @@ public class DatosPersonalesController implements Initializable {
             VBox vDatosPersonales = new VBox();
             vDatosPersonales.setPadding(new Insets(20));
             vDatosPersonales.setAlignment(Pos.CENTER);
-            vDatosPersonales.setStyle("-fx-border-color: black; -fx-border-width: 1;");
+            vDatosPersonales.setStyle("-fx-border-color: white; -fx-border-width: 5;");
 
             HBox tituloDP = new HBox();
             HBox formulario = new HBox();
@@ -66,7 +81,6 @@ public class DatosPersonalesController implements Initializable {
             HBox cApellido = crearCampo("Apellido:");
             HBox cPasaporte = crearCampo("Pasaporte:");
             HBox cCorreo = crearCampo("Correo:");
-
             vNA.getChildren().addAll(cNombre, cApellido);
             vPC.getChildren().addAll(cPasaporte, cCorreo);
 
