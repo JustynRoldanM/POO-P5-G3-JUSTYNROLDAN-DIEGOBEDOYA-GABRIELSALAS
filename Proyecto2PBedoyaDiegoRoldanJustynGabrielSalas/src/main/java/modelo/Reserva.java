@@ -1,6 +1,4 @@
 package modelo;
-
-import com.pooespol.proyecto2pbedoyadiegoroldanjustyn.App;
 import com.pooespol.proyecto2pbedoyadiegoroldanjustyn.PagoController;
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
@@ -12,7 +10,7 @@ import java.util.Random;
 
 /**
  *
- * @author Diego Bedoya
+ * @author Justyn Roldan
  */
 public class Reserva implements Pagable,Serializable{
     private String codigoReserva;
@@ -22,11 +20,11 @@ public class Reserva implements Pagable,Serializable{
     private int numeroPasajeros;
     private Tarifa tarifaIda;
     private Tarifa tarifaRegreso;
-    private String fechaS;
-    private String fechaR;
-    private double totalReserva;
+    private String fechaSalida;
+    private String fechaRegreso;
+    private double total;
 
-    public Reserva(String codigoReserva, Cliente cliente, Vuelo vueloIda, Vuelo vueloRgereso, int numeroPasajeros, Tarifa tarifaIda, Tarifa tarifaRegreso, String fechaS, String fechaR, double totalReserva) {
+    public Reserva(String codigoReserva, Cliente cliente, Vuelo vueloIda, Vuelo vueloRgereso, int numeroPasajeros, Tarifa tarifaIda, Tarifa tarifaRegreso,String fechaSalida,String fechaRegreso,double total) {
         this.codigoReserva = codigoReserva;
         this.cliente = cliente;
         this.vueloIda = vueloIda;
@@ -34,14 +32,16 @@ public class Reserva implements Pagable,Serializable{
         this.numeroPasajeros = numeroPasajeros;
         this.tarifaIda = tarifaIda;
         this.tarifaRegreso = tarifaRegreso;
-        this.fechaS = fechaS;
-        this.fechaR = fechaR;
-        this.totalReserva = totalReserva;
+        this.fechaRegreso=fechaRegreso;
+        this.fechaSalida=fechaSalida;
+        this.total=total;
     }
     
-     public static void escribirReserva(Reserva r){
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/files/reservas.txt",true));){
-           bw.write(r.getCodigoReserva() + "," + r.getCliente().getCedula() + "," + r.getVueloIda().getOrigen() + "," + r.getVueloIda().getDestino() + "," + r.getFechaS() + "," + r.getFechaR() + "," + r.getNumeroPasajeros() + "," + r.getVueloIda().getNumVuelo() + "," + r.getVueloRgereso().getNumVuelo() + "," + r.getTarifaIda().getTipo() + "," + r.getTarifaRegreso().getTipo() + "," + r.getTotalReserva() + "\n");
+    public static void escribirReserva(Reserva r){
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/Files/reservas.txt",true));){
+            bw.write(r.getCodigoReserva()+","+r.getCliente().getCedula()+","+r.getVueloIda().getOrigen()+","+
+                    r.getVueloIda().getDestino()+","+r.getFechaSalida()+","+r.getFechaRegreso()+","+r.getNumeroPasajeros()+","+
+                    r.getVueloIda().getNumVuelo()+","+r.getVueloRgereso().getNumVuelo()+","+r.getTarifaIda().getTipo()+","+r.getTarifaRegreso().getTipo()+","+r.getTotal()+"\n");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -49,7 +49,7 @@ public class Reserva implements Pagable,Serializable{
     }
     
     public void serializarObjetoReserva(){
-        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("src/main/resources/reservasSerializadas/"+this.getCodigoReserva()+".bin"))) {
+        try (ObjectOutputStream salida = new ObjectOutputStream(new FileOutputStream("src/main/resources/ReservasSerializadas/"+this.getCodigoReserva()+".bin"))) {
             salida.writeObject(this);
         } catch (IOException e) {
             e.printStackTrace();
@@ -67,15 +67,31 @@ public class Reserva implements Pagable,Serializable{
         }else{
             f = FormaPago.EFECTIVO;
         }
-        Pago pago = new Pago(codigoPago,f,this,this.getTotalReserva(),PagoController.getDescuento());
-        try(BufferedWriter bw=new BufferedWriter(new FileWriter("src/main/resources/files/pagos.txt",true))){
-            bw.write(pago.getIdPago()+","+pago.getReserva().getCodigoReserva()+","+pago.getReserva().getTotalReserva()+","+pago.getDescuento()+","+pago.getFormaPago()+","+pago.getTotalPagar()+"\n");
+        Pago pago = new Pago(codigoPago,f,this,PagoController.precioConDescuento,PagoController.descuentoValor);
+        try(BufferedWriter bw=new BufferedWriter(new FileWriter("src/main/resources/Files/pagos.txt",true))){
+            bw.write(pago.getIdPago()+","+pago.getReserva().getCodigoReserva()+","+pago.getReserva().getTotal()+","+pago.getDescuento()+","+pago.getFormaPago()+","+pago.getTotalPagar()+"\n");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
         return pago;
     }
+
+    public String getFechaSalida() {
+        return fechaSalida;
+    }
+
+    public void setFechaSalida(String fechaSalida) {
+        this.fechaSalida = fechaSalida;
+    }
+
+    public String getFechaRegreso() {
+        return fechaRegreso;
+    }
+
+    public void setFechaRegreso(String fechaRegreso) {
+        this.fechaRegreso = fechaRegreso;
+    }
+    
 
     public String getCodigoReserva() {
         return codigoReserva;
@@ -101,31 +117,6 @@ public class Reserva implements Pagable,Serializable{
         this.vueloIda = vueloIda;
     }
 
-    public String getFechaS() {
-        return fechaS;
-    }
-
-    public void setFechaS(String fechaS) {
-        this.fechaS = fechaS;
-    }
-
-    public String getFechaR() {
-        return fechaR;
-    }
-
-    public void setFechaR(String fechaR) {
-        this.fechaR = fechaR;
-    }
-
-    public double getTotalReserva() {
-        return totalReserva;
-    }
-
-    public void setTotalReserva(double totalReserva) {
-        this.totalReserva = totalReserva;
-    }
-    
-
     public Vuelo getVueloRgereso() {
         return vueloRgereso;
     }
@@ -136,6 +127,14 @@ public class Reserva implements Pagable,Serializable{
 
     public int getNumeroPasajeros() {
         return numeroPasajeros;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     public void setNumeroPasajeros(int numeroPasajeros) {
@@ -157,5 +156,10 @@ public class Reserva implements Pagable,Serializable{
     public void setTarifaRegreso(Tarifa tarifaRegreso) {
         this.tarifaRegreso = tarifaRegreso;
     }
+    
+    @Override
+    public String toString(){
+        return codigoReserva+" - "+cliente.getNombre()+" "+cliente.getApellido();
+    }
 
 }
