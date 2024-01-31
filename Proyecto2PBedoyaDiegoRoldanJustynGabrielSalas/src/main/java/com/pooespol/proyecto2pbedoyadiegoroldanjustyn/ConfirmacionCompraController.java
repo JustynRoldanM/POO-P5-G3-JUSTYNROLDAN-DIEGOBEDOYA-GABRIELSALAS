@@ -16,15 +16,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Reserva;
 
 /**
  * FXML Controller class
  *
- * @author home
+ * @author Justin Roldan
  */
 public class ConfirmacionCompraController implements Initializable {
 
@@ -33,79 +31,76 @@ public class ConfirmacionCompraController implements Initializable {
      */
     
     @FXML
-    private Label lblReserva;
+    private ImageView image;
     
     @FXML
-    private Label lblConteo;
+    private Label labelCodigoR;
     
     @FXML
-    private ImageView visorImg;
+    private Label labelSegundos;
     
     @FXML
     private Button btnAceptar;
     
+    @FXML
     private static Reserva reserva;
-    private static boolean validar = false;
     
+    boolean validar=false;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        lblReserva.setText(Integer.toString(reserva.getCodigoReserva()));
-        
-        try{
-            FileInputStream f = new FileInputStream("src/main/resources/images/mundo.png");
-            Image img = new Image(f);
-            visorImg.setImage(img);
-        } catch (FileNotFoundException ex) {
+        try(FileInputStream fileInput = new FileInputStream("src/main/resources/images/avionConfirmacion.png")){
+            Image img = new Image(fileInput);
+            image.setImage(img);
+        }catch(FileNotFoundException f){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-        
-        Thread t = new Thread(() -> {
-            for (int i = 5; i > 0; i--){
-                int segundos = i;
+        labelCodigoR.setText(reserva.getCodigoReserva());
+        ejecutarThread();
+    }    
+    
+    private void ejecutarThread(){
+        Thread t = new Thread(()->{
+            for(int i =0;i<5;i++){
+                int e =i;
+                Platform.runLater(()->{
+                    labelSegundos.setText(String.valueOf(5-e));
+                });    
                 try {
-                    Platform.runLater(()-> lblConteo.setText("Ventana cerrada en " + segundos + " segundos..."));
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
             }
             
-            Platform.runLater(() -> {
-                try{
-                    Stage s = (Stage) lblConteo.getScene().getWindow();
+            if(!validar){
+                Platform.runLater(()->{
+                    Stage s=(Stage) labelSegundos.getScene().getWindow();
                     s.close();
-                    
-                    if (validar == false) {
-                        try {
-                            App.abrirNuevaVentana("bienvenido", 1037, 758);
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
+                    try {
+                        App.abrirNuevaVentana("bienvenido", 1037, 758);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
+                });
                 
-                } catch (Exception e){
-                    e.printStackTrace();
-                }
-            });
+            }
         });
-        t.setDaemon(true);
         t.start();
         
-        btnAceptar.setOnAction(e -> {
-            Stage s = (Stage) lblConteo.getScene().getWindow();
+        btnAceptar.setOnAction(e->{
+            validar=true;
+            Stage s=(Stage) labelSegundos.getScene().getWindow();
             s.close();
-            
-            try{
+            try {
                 App.abrirNuevaVentana("bienvenido", 1037, 758);
-            }catch(IOException ex){
+            } catch (IOException ex) {
                 ex.printStackTrace();
             }
-            validar = true;
         });
-        
     }
-        
+    
+
     public static Reserva getReserva() {
         return reserva;
     }
@@ -113,5 +108,7 @@ public class ConfirmacionCompraController implements Initializable {
     public static void setReserva(Reserva reserva) {
         ConfirmacionCompraController.reserva = reserva;
     }
-        
+
+    
+    
 }
