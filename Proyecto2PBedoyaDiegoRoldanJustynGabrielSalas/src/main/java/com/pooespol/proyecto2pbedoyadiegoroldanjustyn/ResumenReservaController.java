@@ -60,6 +60,7 @@ public class ResumenReservaController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        PagoController.setmTotalReserva(vueloIda.getPrecioVuelo()+vueloVenida.getPrecioVuelo());
         Button btnVueloSalida = new Button("Detalles de la Reserva");
         btnVueloSalida.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold;");
         btnVueloSalida.setOnAction(event -> {
