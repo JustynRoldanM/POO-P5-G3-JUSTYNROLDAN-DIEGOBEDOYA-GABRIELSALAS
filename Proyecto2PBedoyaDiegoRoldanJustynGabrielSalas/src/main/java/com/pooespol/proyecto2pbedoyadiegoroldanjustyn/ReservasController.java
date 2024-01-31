@@ -1,4 +1,3 @@
-
 package com.pooespol.proyecto2pbedoyadiegoroldanjustyn;
 
 import java.io.BufferedReader;
@@ -22,7 +21,7 @@ import modelo.Destino;
 /**
  * FXML Controller class
  *
- * @author Justyn Roldan
+ * @author home
  */
 public class ReservasController implements Initializable {
     @FXML
@@ -42,6 +41,7 @@ public class ReservasController implements Initializable {
     
     @FXML
     private Button btnBuscar;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 60, 1);
@@ -63,6 +63,11 @@ public class ReservasController implements Initializable {
                 VuelosRegresoController.setDestinoVRegreso(String.valueOf(cbxOrigen.getValue()));
                 VuelosRegresoController.setOrigenVRegreso(String.valueOf(cbxDestino.getValue()));
                 DatosPersonalesController.setNumeroPersonas((int) cantidadPasajeros.getValue());
+                PagoController.setDestino((Destino) cbxDestino.getValue());
+                PagoController.setFechaSalida(String.valueOf(fechaSalida.getValue()));
+                PagoController.setFechaRegreso(String.valueOf(fechaRegreso.getValue()));
+                PagoController.setNumPasajeros((int) cantidadPasajeros.getValue());
+                PagoController.setOrigen((String) cbxOrigen.getValue());
                 try {
                     cambiarAReservaVuelo();
                 } catch (IOException ex) {
@@ -88,12 +93,9 @@ public class ReservasController implements Initializable {
         cantidadPasajeros.setStyle("-fx-font-size: 18px;");
     }
     
-    
     public void cambiarAReservaVuelo() throws IOException{
         Stage ventanaActual = (Stage) cbxOrigen.getScene().getWindow();
         ventanaActual.close();
         App.abrirNuevaVentana("reservaVuelo", 650, 700);
-    }
-    
-    
+    }
 }
