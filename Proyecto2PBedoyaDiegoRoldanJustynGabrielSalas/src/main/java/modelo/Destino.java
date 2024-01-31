@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.io.BufferedReader;
@@ -53,6 +52,6 @@ public class Destino {
 
     public void setPais(String pais) {
         this.pais = pais;
-    }
-    
+    }
+    
 }
