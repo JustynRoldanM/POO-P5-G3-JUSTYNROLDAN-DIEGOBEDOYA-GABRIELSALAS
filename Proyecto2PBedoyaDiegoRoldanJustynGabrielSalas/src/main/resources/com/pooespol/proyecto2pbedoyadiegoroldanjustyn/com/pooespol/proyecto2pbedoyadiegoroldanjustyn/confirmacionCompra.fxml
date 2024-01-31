@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="675.0" style="-fx-background-color: linear-gradient(to right bottom, #3bd2c0, #6fddec, #b0e5ff, #e3efff, #ffffff);;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ConfirmacionCompraController">
+   <children>
+      <Label layoutX="154.0" layoutY="36.0" prefHeight="56.0" prefWidth="368.0" text="Confirmación de compra">
+         <font>
+            <Font name="Bernard MT Condensed" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="141.0" layoutY="100.0" prefHeight="50.0" prefWidth="381.0" text="!Su compra se ha realizado con éxito!">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="205.0" layoutY="158.0" prefHeight="50.0" prefWidth="100.0" text="Reserva:">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelCodigoR" layoutX="305.0" layoutY="158.0" prefHeight="50.0" prefWidth="131.0" text=" ">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="78.0" layoutY="227.0" prefHeight="50.0" prefWidth="519.0" text="Se ha enviado un mail con los datos de la reserva">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="91.0" layoutY="293.0" prefHeight="50.0" prefWidth="493.0" text="No olvides hacer un check in antes de tu vuelo">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="400.0" prefHeight="50.0" prefWidth="173.0" text="Ventana cerrando en">
+         <font>
+            <Font name="Cambria" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="519.0" layoutY="400.0" prefHeight="50.0" prefWidth="131.0" text="segundos.....">
+         <font>
+            <Font name="Cambria" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelSegundos" layoutX="496.0" layoutY="400.0" prefHeight="50.0" prefWidth="15.0" text="5">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image" fitHeight="208.0" fitWidth="222.0" layoutX="43.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnAceptar" layoutX="420.0" layoutY="498.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="131.0" style="-fx-background-color: black; -fx-border-color: white;" text="Aceptar" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold" size="20.0" />
+         </font>
+         <effect>
+            <Bloom />
+         </effect>
+      </Button>
+   </children>
+</Pane>

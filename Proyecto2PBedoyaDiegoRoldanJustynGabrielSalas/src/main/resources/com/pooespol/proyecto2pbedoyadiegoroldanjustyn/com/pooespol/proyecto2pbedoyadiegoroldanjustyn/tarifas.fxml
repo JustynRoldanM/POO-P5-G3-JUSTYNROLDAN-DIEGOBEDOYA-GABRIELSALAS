@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="550.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.TarifasController">
+   <children>
+      <ScrollPane prefHeight="700.0" prefWidth="550.0">
+         <content>
+            <VBox prefHeight="725.0" prefWidth="550.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="170.0" prefWidth="554.0" style="-fx-background-color: #FFC15A;">
+                     <children>
+                        <Label fx:id="titulo" alignment="CENTER" prefHeight="55.0" prefWidth="587.0" text="Label" textFill="#180000">
+                           <font>
+                              <Font name="Bernard MT Condensed" size="34.0" />
+                           </font>
+                           <effect>
+                              <Bloom />
+                           </effect>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </HBox>
+                  <VBox fx:id="contenedorVB" prefHeight="542.0" prefWidth="698.0" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

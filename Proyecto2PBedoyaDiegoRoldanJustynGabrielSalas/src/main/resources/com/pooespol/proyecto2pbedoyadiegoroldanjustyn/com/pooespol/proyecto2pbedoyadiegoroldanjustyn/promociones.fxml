@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="758.0" prefWidth="1037.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.PromocionesController">
+   <children>
+      <BorderPane fx:id="borderPane" prefHeight="758.0" prefWidth="1037.0">
+         <top>
+            <Pane prefHeight="94.0" prefWidth="936.0" style="-fx-background-color: linear-gradient(to bottom, #FFD700, #FFA500); -fx-border-color: black;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" layoutX="183.0" layoutY="-8.0" prefHeight="84.0" prefWidth="570.0" text="Explora ofertas" textFill="#ac0606">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="46.0" />
+                     </font>
+                     <effect>
+                        <InnerShadow height="9.3" radius="1.8250000000000002" width="0.0" />
+                     </effect>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="54.0" prefHeight="44.0" prefWidth="780.0" text="Da click sobre el país que te interesa y descubre las excelentes promociones disponibles">
+                     <font>
+                        <Font name="Franklin Gothic Demi Cond" size="18.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+         </top>
+         <center>
+            <Pane fx:id="p" prefHeight="573.0" prefWidth="1038.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="mapaProyecto" fitHeight="666.0" fitWidth="1038.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/mapaProyecto.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </center></BorderPane>
+   </children>
+</AnchorPane>

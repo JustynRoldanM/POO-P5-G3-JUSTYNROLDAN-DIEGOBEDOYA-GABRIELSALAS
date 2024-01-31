@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="730.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pooespol.proyecto2pbedoyadiegoroldanjustyn.DatosPersonalesController">
+   <content>
+      <VBox prefHeight="730.0" prefWidth="750.0" style="-fx-background-color: linear-gradient(to bottom, #FF6347, #FFA500, #FFD700); -fx-border-color: black; -fx-border-width: 1px;;">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" prefHeight="70.0" prefWidth="404.0" text="Datos personales" textFill="WHITE">
+                     <font>
+                        <Font name="Bernard MT Condensed" size="46.0" />
+                     </font>
+                     <effect>
+                        <Bloom />
+                     </effect>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <VBox fx:id="contenedorFormularios" alignment="CENTER" prefHeight="578.0" prefWidth="749.0" spacing="20.0">
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+            </VBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="150.0" prefWidth="749.0">
+               <children>
+                  <Button fx:id="btnContinuar" mnemonicParsing="false" prefHeight="31.0" prefWidth="94.0" style="-fx-background-color: black;" text="Continuar" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="40.0" left="50.0" right="50.0" top="40.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
