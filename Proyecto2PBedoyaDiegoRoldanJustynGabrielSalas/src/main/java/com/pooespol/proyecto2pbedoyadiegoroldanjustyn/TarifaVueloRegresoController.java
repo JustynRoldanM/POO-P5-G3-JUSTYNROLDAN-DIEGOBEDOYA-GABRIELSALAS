@@ -46,20 +46,18 @@ public class TarifaVueloRegresoController implements Initializable {
     }
     
     public static ArrayList<Tarifa> tarifas;
+    
     @FXML
     private VBox contenedorVB;
     
     @FXML
     private Label titulo;
     
-    
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarContenidoDinamico();
         titulo.setText("Tarifas");
     }    
-
 
     public static ArrayList<String> cargarColores(){
         ArrayList<String> coloresVintage = new ArrayList<>();
@@ -140,8 +138,10 @@ public class TarifaVueloRegresoController implements Initializable {
             hbPrecio.setPadding(new Insets(15,15,15,15));
             vb.getChildren().add(hbPrecio);
             vb.setOnMouseClicked(e->{
+                PagoController.setTarifaRegreso(tarifaVRegreso);
                 ResumenReservaController.setTarifaVenida(tarifaVRegreso);
                 vueloRegreso.setPrecioVuelo(vueloRegreso.getPrecioVuelo()*(1+tarifaVRegreso.getIncremento()));
+                PagoController.setVueloRegreso(vueloRegreso);
                 ResumenReservaController.setVueloVenida(vueloRegreso);
                 PopDetalleVueloController.setV(vueloRegreso);
                 Stage s = (Stage)contenedorVB.getScene().getWindow();
@@ -207,6 +207,6 @@ public class TarifaVueloRegresoController implements Initializable {
             }
         }
         return null;
-    }
-    
+    }
+    
 }
