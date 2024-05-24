@@ -41,6 +41,7 @@ public class ReservaVueloController implements Initializable {
 
     private static String origen;
     private static String destino;
+    public static ArrayList<String> colores=colores();
     
     @FXML
     private Label titulo;
@@ -100,7 +101,6 @@ public class ReservaVueloController implements Initializable {
     
     public static ArrayList<String> colores() {
         ArrayList<String> colores = new ArrayList<>();
-
         colores.add("#FF6F61");  // Coral
         colores.add("#FFD700");  // Oro
         colores.add("#8A2BE2");  // Azul violeta
@@ -121,12 +121,10 @@ public class ReservaVueloController implements Initializable {
         colores.add("#8B008B");  // Magenta oscuro
         colores.add("#00FA9A");  // Verde césped
         colores.add("#CD853F");  // Bronceado
-
         return colores;
     }
     
     public void contenidoDinamicoVuelos(ArrayList<Vuelo> vuelos) throws FileNotFoundException{
-        ArrayList<String> colores= colores();
         titulo.setText("Selecciona tu vuelo "+origen+" - "+destino);
         ordenar.setText("Ordenar por: ");
         int j=0;
@@ -196,6 +194,7 @@ public class ReservaVueloController implements Initializable {
                 contenedorVB.getChildren().clear();
                 try {
                     Collections.sort(vuelos);
+                    Collections.shuffle(colores);
                     contenidoDinamicoVuelos(vuelos);
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -203,6 +202,7 @@ public class ReservaVueloController implements Initializable {
             }else{
                 contenedorVB.getChildren().clear();
                 Collections.sort(vuelos);
+                Collections.shuffle(colores);
                 try {
                     contenidoDinamicoVuelos(vuelos);
                 } catch (FileNotFoundException ex) {

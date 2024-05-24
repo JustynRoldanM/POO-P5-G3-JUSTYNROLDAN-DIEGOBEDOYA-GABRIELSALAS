@@ -1,6 +1,7 @@
 
 package com.pooespol.proyecto2pbedoyadiegoroldanjustyn;
 
+import static com.pooespol.proyecto2pbedoyadiegoroldanjustyn.ReservaVueloController.colores;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,6 +34,7 @@ public class VuelosRegresoController implements Initializable {
     
     private static String origenVRegreso;
     private static String destinoVRegreso;
+    public static ArrayList<String> colores=colores();
 
     @FXML
     private Label titulo;
@@ -118,7 +120,6 @@ public class VuelosRegresoController implements Initializable {
     }
     
     public void contenidoDinamicoVuelos(ArrayList<Vuelo> vuelos) throws FileNotFoundException{
-        ArrayList<String> colores= colores();
         titulo.setText("Selecciona tu vuelo "+origenVRegreso+" - "+destinoVRegreso);
         ordenar.setText("Ordenar por: ");
         int j=0;
@@ -190,6 +191,7 @@ public class VuelosRegresoController implements Initializable {
                 contenedorVB.getChildren().clear();
                 try {
                     Collections.sort(vuelos);
+                    Collections.shuffle(colores);
                     contenidoDinamicoVuelos(vuelos);
                 } catch (FileNotFoundException ex) {
                     ex.printStackTrace();
@@ -197,6 +199,7 @@ public class VuelosRegresoController implements Initializable {
             }else{
                 contenedorVB.getChildren().clear();
                 Collections.sort(vuelos);
+                Collections.shuffle(colores);
                 try {
                     contenidoDinamicoVuelos(vuelos);
                 } catch (FileNotFoundException ex) {
